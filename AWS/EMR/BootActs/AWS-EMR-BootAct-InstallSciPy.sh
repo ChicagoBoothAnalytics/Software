@@ -33,7 +33,13 @@ then
     git clone https://github.com/ipython-contrib/IPython-notebook-extensions
     cd IPython-notebook-extensions
     mkdir -p ~/.local/share/jupyter
+
+    # the following prefers Python 3.x to have been installed;
+    # hence we temporarily turn off the error trap to force the installation
+    set +e
     python setup.py install
+    set -e
+
     # download & override Jupyter Notebook Config file
     curl $GITHUB_REPO_RAW_PATH/.config/$JUPYTER_NOTEBOOK_CONFIG_FILE_NAME --output $JUPYTER_DIR/$JUPYTER_NOTEBOOK_CONFIG_FILE_NAME
     cd $PROGRAMS_DIR
