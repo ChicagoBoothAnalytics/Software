@@ -27,3 +27,8 @@ conda install Numba
 conda update numba
 conda install NumbaPro
 conda update numbapro
+
+
+# update NumPy & SciPy
+conda update numpy
+conda update scipy
