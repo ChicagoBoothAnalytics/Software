@@ -40,8 +40,3 @@ pip install --upgrade PG8000
 conda install psycopg2   # for Windows, install from .whl here: http://www.lfd.uci.edu/~gohlke/pythonlibs/#psycopg
 conda update psycopg2
 # pip install --upgrade psycopg2cffi   SKIP: requires PostgreSQL installed
-
-
-# install SQLite drivers
-# pip install --upgrade PySQLCipher   SKIP: requires OpenSSL
-# pip install --upgrade PySQLite   SKIP: SQLite3 package already included in Python >=2.5 distributions
