@@ -1,0 +1,68 @@
+#!/bin/sh
+
+
+[global]
+# computation device
+device = gpu
+force_device = False
+print_active_device = True
+
+# float type
+floatX = float32
+warn_float64 = warn
+cast_policy = custom
+
+# to enforce strict integer division
+int_division = raise
+
+# compilation settings
+mode = FAST_RUN
+optimizer = fast_run
+optimizer_verbose = False
+on_opt_error = warn
+check_input = True
+on_unused_input = ignore
+nocleanup = False
+cxx = /usr/bin/g++
+allow_gc = True
+
+# to avoid reoptimizing unpickled functions
+reoptimize_unpickled_function = False
+
+
+[cuda]
+root = /mnt/programs/cuda-7.5
+
+
+[nvcc]
+flags = -I/mnt/programs/cuda-7.5/include -L/mnt/programs/cuda-7.5/lib64
+compiler_bindir = /usr/bin
+fastmath = True
+
+
+[blas]
+# with GPU, can (optionally) use NVIDIA's cuBLAS & NVBLAS (-lcublas -lnvblas)
+# without GPU, then use OpenBLAS (-lopenblas) or ATLAS (-lf77blas -latlas -lgfortran)
+# (ref: http://deeplearning.net/software/theano/install_ubuntu.html
+# and: deeplearning.net/software/theano/install.html#troubleshooting-make-sure-you-have-a-blas-library)
+ldflags = -L/usr/lib64 -L/usr/lib64/atlas -L/mnt/programs/OpenBLAS/lib -L/mnt/programs/cuda-7.5/lib64 -lopenblas
+
+
+[pycuda]
+init = True
+
+
+[tensor]
+local_elemwise_fusion = True
+
+
+[gpu]
+local_elemwise_fusion = True
+
+
+[lib]
+amdlibm = False
+
+
+[scan]
+allow_gc = False

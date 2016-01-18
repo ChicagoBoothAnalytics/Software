@@ -1,0 +1,6 @@
+spark.master local[*]
+spark.driver.extraClassPath C:/Repos/MBALearnsToCode/RelationalData/SQL-JDBC-Drivers/PostgreSQL-JDBC42-9.4.1207.jar;C:/Repos/MBALearnsToCode/RelationalData/SQL-JDBC-Drivers/MySQL-JDBC-5.1.38.jar
+spark.driver.memory 6g
+spark.driver.maxResultSize 3g
+spark.executor.extraClassPath C:/Repos/MBALearnsToCode/RelationalData/SQL-JDBC-Drivers/PostgreSQL-JDBC42-9.4.1207.jar;C:/Repos/MBALearnsToCode/RelationalData/SQL-JDBC-Drivers/MySQL-JDBC-5.1.38.jar
+spark.executor.memory 2g
