@@ -7,7 +7,7 @@ set -x -e
 
 # set CONSTANTS
 export HOME=/mnt/home
-export GITHUB_REPO_RAW_PATH=https://raw.githubusercontent.com/ChicagoBoothML/Helpy/master/ChicagoBoothML_Helpy/AWS-EMR
+export GITHUB_REPO_RAW_PATH=https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/AWS/EMR
 
 
 # change directory to new Home
