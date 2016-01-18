@@ -50,8 +50,8 @@ AWS_REGION=us-west-1
 
 # upload AWS EMR Bootstrap Action & Step scripts to S3 Bucket
 echo "Uploading AWS EMR Bootstrap Action & Step scripts to s3://$S3_BUCKET_NAME..."
-dos2unix BootActs/*.*
-dos2unix Steps/*.*
+dos2unix BootActs/*.sh
+dos2unix Steps/*.sh
 aws s3 cp \
     BootActs/$AWS_EMR_BOOTACT_INSTALL_BASICS_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_BOOTACT_INSTALL_BASICS_SCRIPT_NAME \
