@@ -1,0 +1,10 @@
+install.packages(c(
+  'data.table',
+  'DBI',
+  'dplyr',
+  'reshape2',
+  'RMySQL',
+  'RPostgreSQL',
+  'RSQLite'),
+  dependencies=TRUE,
+  repos='http://cran.rstudio.com')
