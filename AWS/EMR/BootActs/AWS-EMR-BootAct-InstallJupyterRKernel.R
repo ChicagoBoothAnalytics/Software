@@ -1,3 +1,3 @@
 install.packages(c('rzmq','repr','IRkernel','IRdisplay'),
-                 repos = c('http://irkernel.github.io/', getOption('repos')))
+                 repos='http://irkernel.github.io')
 IRkernel::installspec()
