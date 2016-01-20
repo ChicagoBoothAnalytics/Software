@@ -14,7 +14,7 @@ source ~/.EnvVars
 
 
 # install ChicagoBoothML Helpy package
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 git clone https://github.com/ChicagoBoothML/Helpy.git
 cd Helpy
 sudo python setup.py develop

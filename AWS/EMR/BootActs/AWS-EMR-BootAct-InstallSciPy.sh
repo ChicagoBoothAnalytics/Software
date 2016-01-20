@@ -14,7 +14,7 @@ source ~/.EnvVars
 
 
 # change directory to Programs directory
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 
 
 # install/update SciPy stack, excl. Nose
@@ -42,7 +42,7 @@ then
 
     # download & override Jupyter Notebook Config file
     curl $GITHUB_REPO_RAW_PATH/.config/$JUPYTER_NOTEBOOK_CONFIG_FILE_NAME --output $JUPYTER_DIR/$JUPYTER_NOTEBOOK_CONFIG_FILE_NAME
-    cd $PROGRAMS_DIR
+    cd $APPS_DIR
 
     sudo pip install --upgrade MatPlotLib
 fi

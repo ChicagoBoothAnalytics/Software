@@ -14,7 +14,7 @@ source ~/.EnvVars
 
 
 # change directory to Programs directory
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 
 
 # install supporting packages

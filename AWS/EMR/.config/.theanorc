@@ -31,11 +31,11 @@ reoptimize_unpickled_function = False
 
 
 [cuda]
-root = /mnt/programs/cuda-7.5
+root = /mnt/apps/cuda-7.5
 
 
 [nvcc]
-flags = -I/mnt/programs/cuda-7.5/include -L/mnt/programs/cuda-7.5/lib64
+flags = -I/mnt/apps/cuda-7.5/include -L/mnt/apps/cuda-7.5/lib64
 compiler_bindir = /usr/bin
 fastmath = True
 
@@ -45,7 +45,7 @@ fastmath = True
 # without GPU, then use OpenBLAS (-lopenblas) or ATLAS (-lf77blas -latlas -lgfortran)
 # (ref: http://deeplearning.net/software/theano/install_ubuntu.html
 # and: deeplearning.net/software/theano/install.html#troubleshooting-make-sure-you-have-a-blas-library)
-ldflags = -L/usr/lib64 -L/usr/lib64/atlas -L/mnt/programs/OpenBLAS/lib -L/mnt/programs/cuda-7.5/lib64 -lopenblas
+ldflags = -L/usr/lib64 -L/usr/lib64/atlas -L/mnt/apps/OpenBLAS/lib -L/mnt/apps/cuda-7.5/lib64 -lopenblas
 
 
 [pycuda]

@@ -54,7 +54,7 @@ sudo cp -r $CUDA_ROOT/bin/crt/ /usr/bin/
 
 
 # change directory to Programs directory
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 
 
 # install CUDA-related packages
@@ -82,7 +82,7 @@ sudo pip install --upgrade Theano
 cd ~
 wget $GITHUB_REPO_RAW_PATH/.config/$THEANORC_SCRIPT_NAME
 dos2unix $THEANORC_SCRIPT_NAME
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 
 
 # install Deep Learning packages
@@ -133,7 +133,7 @@ cd minerva
 sudo cp configure.in.example configure.in
 # then we need to manually edit CONFIGURE.IN and run below steps
 # ./build.sh
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 
 sudo pip install --upgrade git+git://github.com/hycis/Mozi.git
 sudo pip install --upgrade NervanaNEON
@@ -149,9 +149,9 @@ unzip 3.2.7.zip
 sudo rm 3.2.7.zip
 mkdir eigen-build
 cd eigen-build
-cmake $PROGRAMS_DIR/eigen-eigen-b30b87236a1b
+cmake $APPS_DIR/eigen-eigen-b30b87236a1b
 sudo make install
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 sudo rm -r eigen*
 git clone https://github.com/OpenANN/OpenANN.git
 cd OpenANN
@@ -160,7 +160,7 @@ cd build
 cmake ..
 sudo make install
 sudo ldconfig
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 sudo rm -r OpenANN
 sudo mv /usr/local/local/lib64/python2.7/site-packages/* /usr/local/lib64/python2.7/site-packages/
 

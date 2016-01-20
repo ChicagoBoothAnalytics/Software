@@ -1,16 +1,16 @@
 export HOME=/mnt/home
 cd ~
-export PROGRAMS_DIR=/mnt/programs
-mkdir -p $PROGRAMS_DIR
+export APPS_DIR=/mnt/apps
+mkdir -p $APPS_DIR
 export SPARK_HOME=/usr/lib/spark
-export CUDA_ROOT=$PROGRAMS_DIR/cuda-7.5
+export CUDA_ROOT=$APPS_DIR/cuda-7.5
 export NVVMIR_LIBRARY_DIR=$CUDA_ROOT/nvvm/libdevice
-export OPENBLAS_DIR=$PROGRAMS_DIR/OpenBLAS
+export OPENBLAS_DIR=$APPS_DIR/OpenBLAS
 export GEOS_DIR=/usr/local
 export PROJ_DIR=/usr/local
 export TMPDIR=/mnt/tmp
 mkdir -p $TMPDIR
-export LINUXBREW_HOME=$PROGRAMS_DIR/LinuxBrew
+export LINUXBREW_HOME=$APPS_DIR/LinuxBrew
 export HOMEBREW_TEMP=$TMPDIR
 export PATH=$CUDA_ROOT/bin:$CUDA_ROOT/nvvm/bin:$LINUXBREW_HOME/bin:$LINUXBREW_HOME/sbin:$PATH
 export LD_LIBRARY_PATH=$CUDA_ROOT/lib64:$CUDA_ROOT/lib

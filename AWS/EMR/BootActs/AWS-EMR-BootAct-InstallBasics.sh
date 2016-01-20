@@ -30,7 +30,7 @@ cd /etc/yum.repos.d
 sudo wget $GITHUB_REPO_RAW_PATH/YumRepos/fedora.repo
 sudo wget $GITHUB_REPO_RAW_PATH/YumRepos/google-chrome.repo
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 
 
 # update existing Yum packages
@@ -66,10 +66,10 @@ git clone https://github.com/xianyi/OpenBLAS $OPENBLAS_DIR
 cd $OPENBLAS_DIR
 make
 sudo make install PREFIX=$OPENBLAS_DIR
-cd $PROGRAMS_DIR
+cd $APPS_DIR
 
 # skip installation of GotoBLAS2 because of error: https://gist.github.com/certik/1224558
-# cd $PROGRAMS_DIR
+# cd $APPS_DIR
 # wget https://www.tacc.utexas.edu/documents/1084364/1087496/GotoBLAS2-1.13.tar.gz
 # tar xzf GotoBLAS2-1.13.tar.gz
 # sudo rm GotoBLAS2-1.13.tar.gz
@@ -161,3 +161,19 @@ sudo pip install --upgrade Py4J
 
 # PySpark_CSV
 wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_csv.py
+
+
+# install R, RStudio Server & basic R packages
+sudo yum install -y R
+sudo yum install -y --nogpgcheck https://download2.rstudio.org/rstudio-server-rhel-0.99.491-x86_64.rpm
+
+
+# install Scala
+wget http://downloads.typesafe.com/scala/2.11.7/scala-2.11.7.tgz
+tar xvf scala-*.tgz
+sudo rm scala-*.tgz
+sudo ln -s $APPS_DIR/scala-*/bin/fsc /usr/bin/fsc
+sudo ln -s $APPS_DIR/scala-*/bin/scala /usr/bin/scala
+sudo ln -s $APPS_DIR/scala-*/bin/scalac /usr/bin/scalac
+sudo ln -s $APPS_DIR/scala-*/bin/scaladoc /usr/bin/scaladoc
+sudo ln -s $APPS_DIR/scala-*/bin/scalap /usr/bin/scalap
