@@ -1,3 +1,4 @@
+library(devtools)
 install_github('armstrtw/rzmq')
 
 install.packages(c('repr', 'IRkernel', 'IRdisplay'),
