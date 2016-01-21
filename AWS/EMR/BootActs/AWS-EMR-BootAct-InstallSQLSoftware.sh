@@ -26,6 +26,10 @@ sudo yum install -y unixODBC-devel
 sudo pip install --upgrade SQLalchemy
 
 
+# install CSVkit
+sudo pip install --upgrade CSVkit
+
+
 # install commonly-applicable drivers
 sudo pip install --upgrade Egenix-mxODBC
 sudo pip install --upgrade PyODBC
