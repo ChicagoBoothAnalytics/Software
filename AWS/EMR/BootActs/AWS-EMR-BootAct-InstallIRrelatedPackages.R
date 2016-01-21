@@ -1,6 +1,5 @@
 install.packages(
-    c('devtools',
-      'rzmq',
+    c('rzmq',
       'repr',
       'IRkernel',
       'IRdisplay'),
