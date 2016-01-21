@@ -173,11 +173,8 @@ sudo ln -s /usr/bin/pip-2.7 /usr/bin/pip
 
 # install basic Python packages
 
-# CSVkit
-sudo pip install --upgrade CSVkit
-
-# Cython
-sudo pip install --upgrade Cython
+# Cython   SKIPPED: takes long
+# sudo pip install --upgrade Cython
 
 # FindSpark
 sudo pip install --upgrade FindSpark
@@ -199,10 +196,18 @@ wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_c
 sudo yum install -y R
 sudo yum install -y --nogpgcheck https://download2.rstudio.org/rstudio-server-rhel-0.99.491-x86_64.rpm
 
-wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
-dos2unix AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
-sudo Rscript AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
-sudo rm AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
+wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallIRrelatedPackages.R
+dos2unix AWS-EMR-BootAct-InstallIRrelatedPackages.R
+sudo Rscript AWS-EMR-BootAct-InstallIRrelatedPackages.R
+sudo rm AWS-EMR-BootAct-InstallIRrelatedPackages.R
+
+
+# install Julia
+wget https://junolab.s3.amazonaws.com/release/1.1.0/juno-linux-x64.zip
+unzip juno-linux-x64.zip
+sudo rm juno-linux-x64.zip
+sudo ln -s $APPS_DIR/juno-linux64/resources/app/julia/bin/julia /usr/bin/julia
+sudo ln -s $APPS_DIR/juno-linux64/resources/app/julia/bin/julia-debug /usr/bin/julia-debug
 
 
 # install Scala
