@@ -2,23 +2,28 @@ export HOME=/mnt/home
 cd ~
 export APPS_DIR=/mnt/apps
 mkdir -p $APPS_DIR
+export TMP_DIR=/mnt/tmp
+mkdir -p $TMP_DIR
 export SPARK_HOME=/usr/lib/spark
 export CUDA_ROOT=$APPS_DIR/cuda-7.5
 export NVVMIR_LIBRARY_DIR=$CUDA_ROOT/nvvm/libdevice
 export OPENBLAS_DIR=$APPS_DIR/OpenBLAS
-export GEOS_DIR=/usr/local
-export PROJ_DIR=/usr/local
-export TMPDIR=/mnt/tmp
-mkdir -p $TMPDIR
+export GEOS_DIR=/usr
+export PROJ_DIR=/usr
+export SODIUM_DIR=/usr
+export sodium_CFLAGS=-I/usr/include
+export sodium_LIBS=-L/usr/lib
+export ZMQ_DIR=/usr
 export LINUXBREW_HOME=$APPS_DIR/LinuxBrew
-export HOMEBREW_TEMP=$TMPDIR
+export HOMEBREW_TEMP=$TMP_DIR
 export PATH=$CUDA_ROOT/bin:$CUDA_ROOT/nvvm/bin:$LINUXBREW_HOME/bin:$LINUXBREW_HOME/sbin:$PATH
 export LD_LIBRARY_PATH=$CUDA_ROOT/lib64:$CUDA_ROOT/lib
+export PKG_CONFIG_PATH=/usr/lib64/pkgconfig:/usr/lib/pkgconfig
 export KERNEL_RELEASE=$(uname -r)
 export KERNEL_SOURCE_PATH=/usr/src/kernels/$KERNEL_RELEASE
-export JUPYTER_DIR=~/.jupyter
 export GITHUB_REPO_RAW_PATH=https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/AWS/EMR
 export ENV_VARS_SCRIPT_NAME=.EnvVars
 export SPARK_DEFAULTS_CONF_FILE_NAME=spark-defaults.conf
 export JUPYTER_NOTEBOOK_CONFIG_FILE_NAME=jupyter_notebook_config.py
+export JUPYTER_DIR=~/.jupyter
 export THEANORC_SCRIPT_NAME=.theanorc
