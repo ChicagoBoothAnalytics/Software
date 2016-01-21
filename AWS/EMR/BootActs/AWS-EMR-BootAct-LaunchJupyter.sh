@@ -25,6 +25,20 @@ then
     sudo rm AWS-EMR-BootAct-InstallJupyterRKernel.R
 
 
+    # install Julia kernel
+    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-AddIJuliaPackage.jl
+    dos2unix AWS-EMR-BootAct-AddIJuliaPackage.jl
+    set +e
+    julia AWS-EMR-BootAct-AddIJuliaPackage.jl
+    set -e
+    sudo rm AWS-EMR-BootAct-AddIJuliaPackage.jl
+
+    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-BuildIJuliaPackage.jl
+    dos2unix AWS-EMR-BootAct-BuildIJuliaPackage.jl
+    julia AWS-EMR-BootAct-BuildIJuliaPackage.jl
+    sudo rm AWS-EMR-BootAct-BuildIJuliaPackage.jl
+    
+
     # install Scala kernel
     wget https://oss.sonatype.org/content/repositories/snapshots/com/github/alexarchambault/jupyter/jupyter-scala-cli_2.11.6/0.2.0-SNAPSHOT/jupyter-scala_2.11.6-0.2.0-SNAPSHOT.zip
     unzip jupyter-scala_*.zip
@@ -32,6 +46,7 @@ then
     cd jupyter-scala_*/bin
     chmod 777 jupyter-scala
     ./jupyter-scala
+    sudo mv /home/hadoop/.ipython/kernels/scala211/ ~/.local/share/jupyter/kernels/
 
 
     # launch Jupyter as "no hang-up" background process
