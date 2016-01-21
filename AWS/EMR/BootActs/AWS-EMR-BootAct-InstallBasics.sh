@@ -92,19 +92,51 @@ sudo yum install -y cmake
 sudo yum install -y git
 
 
-# install HDF5
-sudo rpm -ivh http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
-sudo rpm -ivh http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
-
-
 # install some other packages
 sudo yum install -y cairo-devel
+sudo yum install -y glib*
 sudo yum install -y graphviz
 sudo yum install -y graphviz-devel
+sudo yum install -y libcurl-devel
 sudo yum install -y libffi-devel
 sudo yum install -y libjpeg-devel
+sudo yum install -y libssh2-devel
+sudo yum install -y libuuid-devel
+sudo yum install -y libxml2-devel
 sudo yum install -y ncurses-devel
+sudo yum install -y openssl-devel
 sudo yum install -y patch
+sudo yum install -y zlib-devel
+
+
+# install HDF5
+sudo yum install -y http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
+sudo yum install -y http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
+
+
+# install LibSodium
+wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
+tar xzf LATEST.tar.gz
+sudo rm LATEST.tar.gz
+cd libsodium-*
+./configure --prefix=$SODIUM_DIR
+make
+sudo make install
+export LDFLAGS=-lsodium
+cd ..
+sudo rm -r libsodium-*
+
+
+# install ZeroMQ
+git clone https://github.com/zeromq/libzmq
+cd libzmq
+./autogen.sh
+./configure --prefix=$ZMQ_DIR
+make
+sudo make install
+sudo ldconfig
+cd ..
+sudo rm -r libzmq
 
 
 # install EPLL Release package
@@ -163,9 +195,13 @@ sudo pip install --upgrade Py4J
 wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_csv.py
 
 
-# install R, RStudio Server & basic R packages
+# install R, RStudio Server & R DevTools
 sudo yum install -y R
 sudo yum install -y --nogpgcheck https://download2.rstudio.org/rstudio-server-rhel-0.99.491-x86_64.rpm
+
+wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallRDevTools.R
+dos2unix AWS-EMR-BootAct-InstallRDevTools.R
+sudo Rscript AWS-EMR-BootAct-InstallRDevTools.R
 
 
 # install Scala
