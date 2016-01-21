@@ -17,6 +17,7 @@ export ZMQ_DIR=/usr
 export LINUXBREW_HOME=$APPS_DIR/LinuxBrew
 export HOMEBREW_TEMP=$TMP_DIR
 export PATH=$CUDA_ROOT/bin:$CUDA_ROOT/nvvm/bin:$LINUXBREW_HOME/bin:$LINUXBREW_HOME/sbin:$PATH
+export LD_RUN_PATH=/usr/lib64:/usr/lib
 export LD_LIBRARY_PATH=$CUDA_ROOT/lib64:$CUDA_ROOT/lib
 export PKG_CONFIG_PATH=/usr/lib64/pkgconfig:/usr/lib/pkgconfig
 export KERNEL_RELEASE=$(uname -r)
