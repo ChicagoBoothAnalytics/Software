@@ -23,7 +23,7 @@ then
     dos2unix AWS-EMR-BootAct-InstallJupyterRKernel.R
     Rscript AWS-EMR-BootAct-InstallJupyterRKernel.R
     sudo rm AWS-EMR-BootAct-InstallJupyterRKernel.R
-    
+
 
     # install Scala kernel
     wget https://oss.sonatype.org/content/repositories/snapshots/com/github/alexarchambault/jupyter/jupyter-scala-cli_2.11.6/0.2.0-SNAPSHOT/jupyter-scala_2.11.6-0.2.0-SNAPSHOT.zip

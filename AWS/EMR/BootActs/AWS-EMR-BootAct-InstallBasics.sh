@@ -195,14 +195,14 @@ sudo pip install --upgrade Py4J
 wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_csv.py
 
 
-# install R, RStudio Server & R DevTools
+# install R, RStudio Server, R DevTools & iR Kernel-related packages
 sudo yum install -y R
 sudo yum install -y --nogpgcheck https://download2.rstudio.org/rstudio-server-rhel-0.99.491-x86_64.rpm
 
-wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallRDevTools.R
-dos2unix AWS-EMR-BootAct-InstallRDevTools.R
-sudo Rscript AWS-EMR-BootAct-InstallRDevTools.R
-sudo rm AWS-EMR-BootAct-InstallRDevTools.R
+wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
+dos2unix AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
+sudo Rscript AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
+sudo rm AWS-EMR-BootAct-InstallRDevToolsAndIRrelatedPackages.R
 
 
 # install Scala
