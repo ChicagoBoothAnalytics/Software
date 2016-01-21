@@ -18,25 +18,30 @@ then
     cd $APPS_DIR
 
 
-    # install R kernel
-    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallJupyterRKernel.R
-    dos2unix AWS-EMR-BootAct-InstallJupyterRKernel.R
-    Rscript AWS-EMR-BootAct-InstallJupyterRKernel.R
-    sudo rm AWS-EMR-BootAct-InstallJupyterRKernel.R
+    # install iR kernel
+    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallJupyterIRKernelRelatedPackages.R
+    dos2unix AWS-EMR-BootAct-InstallJupyterIRKernelRelatedPackages.R
+    sudo Rscript AWS-EMR-BootAct-InstallJupyterIRKernelRelatedPackages.R
+    sudo rm AWS-EMR-BootAct-InstallJupyterIRKernelRelatedPackages.R
+
+    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallJupyterIRKernel.R
+    dos2unix AWS-EMR-BootAct-InstallJupyterIRKernel.R
+    Rscript AWS-EMR-BootAct-InstallJupyterIRKernel.R
+    sudo rm AWS-EMR-BootAct-InstallJupyterIRKernel.R
 
 
-    # install Julia kernel
-    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-AddIJuliaPackage.jl
-    dos2unix AWS-EMR-BootAct-AddIJuliaPackage.jl
+    # install iJulia kernel
+    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
+    dos2unix AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
     set +e
-    julia AWS-EMR-BootAct-AddIJuliaPackage.jl
+    julia AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
     set -e
-    sudo rm AWS-EMR-BootAct-AddIJuliaPackage.jl
+    sudo rm AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
 
-    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-BuildIJuliaPackage.jl
-    dos2unix AWS-EMR-BootAct-BuildIJuliaPackage.jl
-    julia AWS-EMR-BootAct-BuildIJuliaPackage.jl
-    sudo rm AWS-EMR-BootAct-BuildIJuliaPackage.jl
+    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
+    dos2unix AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
+    julia AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
+    sudo rm AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
     
 
     # install Scala kernel
