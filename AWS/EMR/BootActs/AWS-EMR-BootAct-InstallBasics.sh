@@ -202,6 +202,7 @@ sudo yum install -y --nogpgcheck https://download2.rstudio.org/rstudio-server-rh
 wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallRDevTools.R
 dos2unix AWS-EMR-BootAct-InstallRDevTools.R
 sudo Rscript AWS-EMR-BootAct-InstallRDevTools.R
+sudo rm AWS-EMR-BootAct-InstallRDevTools.R
 
 
 # install Scala
