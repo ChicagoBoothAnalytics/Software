@@ -57,6 +57,25 @@ sudo cp -r $CUDA_ROOT/bin/crt/ /usr/bin/
 cd $APPS_DIR
 
 
+# install OpenBLAS
+git clone https://github.com/xianyi/OpenBLAS $OPENBLAS_DIR
+cd $OPENBLAS_DIR
+make
+sudo make install PREFIX=$OPENBLAS_DIR
+cd $APPS_DIR
+
+# skip installation of GotoBLAS2 because of error: https://gist.github.com/certik/1224558
+# cd $APPS_DIR
+# wget https://www.tacc.utexas.edu/documents/1084364/1087496/GotoBLAS2-1.13.tar.gz
+# tar xzf GotoBLAS2-1.13.tar.gz
+# sudo rm GotoBLAS2-1.13.tar.gz
+# cd GotoBLAS2
+# make
+# sudo make install PREFIX=$GOTOBLAS_DIR
+# cd ..
+# sudo rm -r GotoBLAS2
+
+
 # install CUDA-related packages
 git clone --recursive http://git.tiker.net/trees/pycuda.git
 cd pycuda
