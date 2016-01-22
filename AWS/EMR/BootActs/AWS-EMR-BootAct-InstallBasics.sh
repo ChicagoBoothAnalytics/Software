@@ -16,12 +16,12 @@ cd ~
 
 
 # start logging main disk usage
-df -h / > $MAIN_DISK_USAGE_LOG
+df -h / > /mnt/home/MainDiskUsage.log
 
 
 # install DOS2UNIX utility
 sudo yum install -y dos2unix
-echo `df -h /` DOS2UNIX >> $MAIN_DISK_USAGE_LOG
+echo `df -h /` DOS2UNIX >> /mnt/home/MainDiskUsage.log
 
 
 # download & source script specifying environment variables in Home directory
