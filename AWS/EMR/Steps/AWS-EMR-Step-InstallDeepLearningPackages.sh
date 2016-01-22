@@ -116,7 +116,7 @@ sudo pip install --upgrade Chainer
 git clone https://github.com/akrizhevsky/cuda-convnet2
 # sudo pip install --upgrade DeepCL   need OpenCL
 sudo pip install --upgrade DeepDish
-sudo pip install --upgrade git+git://github.com/dirkneumann/deepdist.git
+# sudo pip install --upgrade git+git://github.com/dirkneumann/deepdist.git   SKIPPED: abandoned project
 
 git clone https://github.com/andersbll/cudarray
 cd cudarray
@@ -129,13 +129,14 @@ sudo pip install --upgrade git+git://github.com/andersbll/deeppy.git
 
 sudo pip install --upgrade Deepy
 
-git clone https://github.com/libfann/fann.git
-cd fann
-cmake .
-sudo make install
-cd ..
-sudo rm -r fann
-sudo pip install --upgrade FANN2
+# SKIPPING installation of FANN to save disk space
+# git clone https://github.com/libfann/fann.git
+# cd fann
+# cmake .
+# sudo make install
+# cd ..
+# sudo rm -r fann
+# sudo pip install --upgrade FANN2
 
 sudo pip install --upgrade FFnet
 
@@ -145,7 +146,7 @@ set -e
 
 sudo pip install --upgrade Keras
 sudo pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
-sudo pip install --upgrade Mang
+# sudo pip install --upgrade Mang   SKIPPED: abandoned project
 
 git clone https://github.com/dmlc/minerva
 cd minerva
@@ -160,7 +161,7 @@ sudo pip install --upgrade NervanaNEON
 sudo pip install --upgrade NeuroLab
 sudo pip install --upgrade NLPnet
 # sudo pip install --upgrade git+git://github.com/zomux/nlpy.git   installation fails
-sudo pip install --upgrade NN
+# sudo pip install --upgrade NN   SKIPPED: toy project
 sudo pip install --upgrade NoLearn
 
 # SKIPPING installation of Eigen & OpenANN to save disk space
@@ -185,7 +186,7 @@ sudo pip install --upgrade NoLearn
 # sudo rm -r OpenANN
 # sudo mv /usr/local/local/lib64/python2.7/site-packages/* /usr/local/lib64/python2.7/site-packages/
 
-git clone https://github.com/guoding83128/OpenDL
+# git clone https://github.com/guoding83128/OpenDL   SKIPPED: abandoned project
 
 git clone https://github.com/vitruvianscience/opendeep.git
 cd opendeep
