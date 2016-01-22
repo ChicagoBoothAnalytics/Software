@@ -5,6 +5,14 @@
 set -x -e
 
 
+# change Home directory
+export HOME=/mnt/home
+
+
+# source script specifying environment variables
+source ~/.EnvVars
+
+
 # install advanced visualization tools
 sudo pip install --upgrade Bokeh
 echo `df -h / | sed -n 2p` Bokeh >> $MAIN_DISK_USAGE_LOG
