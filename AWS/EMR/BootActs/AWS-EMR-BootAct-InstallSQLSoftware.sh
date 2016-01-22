@@ -89,7 +89,7 @@ curl https://jdbc.postgresql.org/download/postgresql-9.4.1207.jar --output Postg
 
 
 # install SQLite drivers
-sudo pip install --upgrade PySQLCipher
+# sudo pip install --upgrade PySQLCipher   skip: needs Cython? or somehow fails on GPU instances
 # sudo pip install --upgrade PySQLite   skip: SQLite3 package already included in Python >=2.5 distributions
 
 git clone https://github.com/xerial/sqlite-jdbc
