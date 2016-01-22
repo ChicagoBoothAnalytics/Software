@@ -163,25 +163,27 @@ sudo pip install --upgrade NLPnet
 sudo pip install --upgrade NN
 sudo pip install --upgrade NoLearn
 
-wget http://bitbucket.org/eigen/eigen/get/3.2.7.zip
-unzip 3.2.7.zip
-sudo rm 3.2.7.zip
-mkdir eigen-build
-cd eigen-build
-cmake $APPS_DIR/eigen-eigen-b30b87236a1b
-sudo make install
-cd $APPS_DIR
-sudo rm -r eigen*
-git clone https://github.com/OpenANN/OpenANN.git
-cd OpenANN
-mkdir build
-cd build
-cmake ..
-sudo make install
-sudo ldconfig
-cd $APPS_DIR
-sudo rm -r OpenANN
-sudo mv /usr/local/local/lib64/python2.7/site-packages/* /usr/local/lib64/python2.7/site-packages/
+# SKIPPING installation of Eigen & OpenANN to save disk space
+# wget http://bitbucket.org/eigen/eigen/get/3.2.7.zip
+# unzip 3.2.7.zip
+# sudo rm 3.2.7.zip
+# mkdir eigen-build
+# cd eigen-build
+# cmake $APPS_DIR/eigen-eigen-b30b87236a1b
+# sudo make install
+# cd $APPS_DIR
+# sudo rm -r eigen*
+
+# git clone https://github.com/OpenANN/OpenANN.git
+# cd OpenANN
+# mkdir build
+# cd build
+# cmake ..
+# sudo make install
+# sudo ldconfig
+# cd $APPS_DIR
+# sudo rm -r OpenANN
+# sudo mv /usr/local/local/lib64/python2.7/site-packages/* /usr/local/lib64/python2.7/site-packages/
 
 git clone https://github.com/guoding83128/OpenDL
 
