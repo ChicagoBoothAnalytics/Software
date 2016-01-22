@@ -28,3 +28,4 @@ export SPARK_DEFAULTS_CONF_FILE_NAME=spark-defaults.conf
 export JUPYTER_NOTEBOOK_CONFIG_FILE_NAME=jupyter_notebook_config.py
 export JUPYTER_DIR=~/.jupyter
 export THEANORC_SCRIPT_NAME=.theanorc
+export MAIN_DISK_USAGE_LOG=~/MainDiskUsage.log

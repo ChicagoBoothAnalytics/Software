@@ -27,6 +27,7 @@ cd ..
 sudo python setup.py install
 cd ..
 sudo rm -r basemap
+echo `df -h /` Basemap >> $MAIN_DISK_USAGE_LOG
 
 wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
 tar xzf proj-4.8.0.tar.gz
@@ -37,12 +38,22 @@ make
 sudo make install
 cd ..
 sudo rm -r proj-4.8.0
+echo `df -h /` Proj >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade Descartes
+echo `df -h /` Descartes >> $MAIN_DISK_USAGE_LOG
+
 sudo pip install --upgrade Google-API-Python-Client
+echo `df -h /` Google-API-Python-Client >> $MAIN_DISK_USAGE_LOG
+
 sudo pip install --upgrade GoogleMaps
+echo `df -h /` GoogleMaps >> $MAIN_DISK_USAGE_LOG
+
 sudo pip install --upgrade PyProj
+echo `df -h /` PyProj >> $MAIN_DISK_USAGE_LOG
+
 sudo pip install --upgrade PySAL
+echo `df -h /` PySAL >> $MAIN_DISK_USAGE_LOG
 
 # brew install gdal
 # sudo pip install --upgrade Fiona   # depends on GDAL

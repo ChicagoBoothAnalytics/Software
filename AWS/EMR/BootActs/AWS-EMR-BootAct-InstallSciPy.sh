@@ -22,6 +22,7 @@ sudo pip install --upgrade NumPy
 sudo pip install --upgrade Pandas
 sudo pip install --upgrade SciPy
 sudo pip install --upgrade SymPy
+echo `df -h /` NumPy, Pandas, SciPy, Sympy >> $MAIN_DISK_USAGE_LOG
 
 # install iPython / Jupyter (plus extensions) & MatPlotLib on Master node only
 if grep isMaster /mnt/var/lib/info/instance.json | grep true;
@@ -29,6 +30,7 @@ then
     # install iPython / Jupyter
     sudo pip install --upgrade iPython[all]
     sudo pip install --upgrade Jupyter
+    echo `df -h /` iPython, Jupyter >> $MAIN_DISK_USAGE_LOG
 
     # create symbolic links in /usr/bin to iPython / Jupyter binaries
     # because R does not search /usr/local/bin
@@ -38,6 +40,7 @@ then
 
     # install Jupyter Notebook Extensions
     sudo pip install --upgrade iPyExt
+    echo `df -h /` iPyExt >> $MAIN_DISK_USAGE_LOG
 
     git clone https://github.com/ipython-contrib/IPython-notebook-extensions
     cd IPython-notebook-extensions
@@ -48,6 +51,7 @@ then
     set +e
     python setup.py install
     set -e
+    echo `df -h /` iPython Notebook Extensions >> $MAIN_DISK_USAGE_LOG
 
 
     # download & override Jupyter Notebook Config file
@@ -57,4 +61,5 @@ then
 
     # install MatPlotLib
     sudo pip install --upgrade MatPlotLib
+    echo `df -h /` MatPlotLib >> $MAIN_DISK_USAGE_LOG
 fi
