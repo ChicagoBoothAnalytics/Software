@@ -29,7 +29,7 @@ then
     Rscript AWS-EMR-BootAct-InstallJupyterIRKernel.R
     sudo rm AWS-EMR-BootAct-InstallJupyterIRKernel.R
 
-    echo `df -h /` Jupyter iR Kernel >> $MAIN_DISK_USAGE_LOG
+    echo `df -h / | sed -n 2p` Jupyter iR Kernel >> $MAIN_DISK_USAGE_LOG
 
 
     # install iJulia kernel
@@ -45,7 +45,7 @@ then
     julia AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
     sudo rm AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
 
-    echo `df -h /` Jupyter iJulia Kernel >> $MAIN_DISK_USAGE_LOG
+    echo `df -h / | sed -n 2p` Jupyter iJulia Kernel >> $MAIN_DISK_USAGE_LOG
 
 
     # install Scala kernel
@@ -57,7 +57,7 @@ then
     ./jupyter-scala
     sudo mv /home/hadoop/.ipython/kernels/scala211/ ~/.local/share/jupyter/kernels/
 
-    echo `df -h /` Jupyter Scala Kernel >> $MAIN_DISK_USAGE_LOG
+    echo `df -h / | sed -n 2p` Jupyter Scala Kernel >> $MAIN_DISK_USAGE_LOG
 
 
     # launch Jupyter as "no hang-up" background process

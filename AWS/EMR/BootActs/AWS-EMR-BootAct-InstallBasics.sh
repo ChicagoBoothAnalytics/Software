@@ -21,7 +21,7 @@ df -h / > /mnt/home/MainDiskUsage.log
 
 # install DOS2UNIX utility
 sudo yum install -y dos2unix
-echo `df -h /` DOS2UNIX >> /mnt/home/MainDiskUsage.log
+echo `df -h / | sed -n 2p` DOS2UNIX >> /mnt/home/MainDiskUsage.log
 
 
 # download & source script specifying environment variables in Home directory
@@ -35,36 +35,36 @@ cd /etc/yum.repos.d
 sudo wget $GITHUB_REPO_RAW_PATH/YumRepos/fedora.repo
 sudo wget $GITHUB_REPO_RAW_PATH/YumRepos/google-chrome.repo
 sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
-echo `df -h /` YUM Repo Files >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` YUM Repo Files >> $MAIN_DISK_USAGE_LOG
 cd $APPS_DIR
 
 
 # update existing Yum packages
 sudo yum update -y
-echo `df -h /` YUM Update All Packages >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` YUM Update All Packages >> $MAIN_DISK_USAGE_LOG
 
 
 # install essential Development Tools
 sudo yum groupinstall -y "Development Tools"
-echo `df -h /` Development Tools >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Development Tools >> $MAIN_DISK_USAGE_LOG
 
 
 # install Performance Tools
 sudo yum groupinstall -y "Performance Tools"
-echo `df -h /` Performance Tools >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Performance Tools >> $MAIN_DISK_USAGE_LOG
 
 
 # re-install compatible kernel source files
 sudo yum erase -y kernel-devel
 sudo yum install -y kernel-devel-$KERNEL_RELEASE
-echo `df -h /` Kernel-Devel >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Kernel-Devel >> $MAIN_DISK_USAGE_LOG
 
 
 # install C, C++ & ForTran compilers
 sudo yum install -y gcc
 sudo yum install -y gcc-c++
 sudo yum install -y gcc-gfortran
-echo `df -h /` Compilers >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Compilers >> $MAIN_DISK_USAGE_LOG
 
 
 # install numerical libraries
@@ -72,22 +72,22 @@ sudo yum install -y atlas-devel
 sudo yum install -y blas
 sudo yum install -y blas-devel
 sudo yum install -y lapack-devel
-echo `df -h /` BLASes >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` BLASes >> $MAIN_DISK_USAGE_LOG
 
 
 # install Boost
 sudo yum install -y boost
-echo `df -h /` Boost >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Boost >> $MAIN_DISK_USAGE_LOG
 
 
 # install CMake
 sudo yum install -y cmake
-echo `df -h /` CMake >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` CMake >> $MAIN_DISK_USAGE_LOG
 
 
 # install Git
 sudo yum install -y git
-echo `df -h /` Git >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Git >> $MAIN_DISK_USAGE_LOG
 
 
 # install some other packages
@@ -105,13 +105,13 @@ sudo yum install -y ncurses-devel
 sudo yum install -y openssl-devel
 sudo yum install -y patch
 sudo yum install -y zlib-devel
-echo `df -h /` Misc. Packages >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Misc. Packages >> $MAIN_DISK_USAGE_LOG
 
 
 # install HDF5
 sudo yum install -y http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
 sudo yum install -y http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
-echo `df -h /` HDF5 >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` HDF5 >> $MAIN_DISK_USAGE_LOG
 
 
 # install LibSodium
@@ -125,7 +125,7 @@ sudo make install
 export LDFLAGS=-lsodium
 cd ..
 sudo rm -r libsodium-*
-echo `df -h /` LibSodium >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` LibSodium >> $MAIN_DISK_USAGE_LOG
 
 
 # install ZeroMQ
@@ -138,7 +138,7 @@ sudo make install
 sudo ldconfig
 cd ..
 sudo rm -r libzmq
-echo `df -h /` ZeroMQ >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` ZeroMQ >> $MAIN_DISK_USAGE_LOG
 
 
 # install EPLL Release package
@@ -149,7 +149,7 @@ curl -X GET -o epll-release-2015.09-1.1.ll1.noarch.rpm https://lambda-linux.io/e
 sudo yum install -y epll-release-2015.09-1.1.ll1.noarch.rpm
 sudo rm RPM-GPG-KEY-lambda-epll
 sudo rm epll-release-2015.09-1.1.ll1.noarch.rpm
-echo `df -h /` EPLL >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` EPLL >> $MAIN_DISK_USAGE_LOG
 
 
 # install Firefox
@@ -158,7 +158,7 @@ sudo yum --enablerepo=epll install -y firefox-compat
 wget -O firefox-latest.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
 bzcat firefox-latest.tar.bz2 | tar xvf -
 sudo rm firefox-latest.tar.bz2
-echo `df -h /` Firefox-Supporting Packages >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Firefox-Supporting Packages >> $MAIN_DISK_USAGE_LOG
 
 
 # install LinuxBrew
@@ -179,31 +179,26 @@ sudo ln -s /usr/bin/pip-2.7 /usr/bin/pip
 
 # Cython   SKIPPED: takes long
 # sudo pip install --upgrade Cython
-# echo `df -h /` Cython >> $MAIN_DISK_USAGE_LOG
+# echo `df -h / | sed -n 2p` Cython >> $MAIN_DISK_USAGE_LOG
 
 # FindSpark
 sudo pip install --upgrade FindSpark
-echo `df -h /` FindSpark >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` FindSpark >> $MAIN_DISK_USAGE_LOG
 
 # H2O
 sudo pip install --upgrade H2O
-echo `df -h /` H2O >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` H2O >> $MAIN_DISK_USAGE_LOG
 
 # PSutil
 sudo pip install --upgrade PSutil
-echo `df -h /` PSutil >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` PSutil >> $MAIN_DISK_USAGE_LOG
 
 # Py4J (for PySpark)
 sudo pip install --upgrade Py4J
-echo `df -h /` Py4J >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Py4J >> $MAIN_DISK_USAGE_LOG
 
 # PySpark_CSV
 wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_csv.py
-
-
-# install RStudio Server
-sudo yum install -y --nogpgcheck https://download2.rstudio.org/rstudio-server-rhel-0.99.491-x86_64.rpm
-echo `df -h /` RStudio Server >> $MAIN_DISK_USAGE_LOG
 
 
 # install Julia

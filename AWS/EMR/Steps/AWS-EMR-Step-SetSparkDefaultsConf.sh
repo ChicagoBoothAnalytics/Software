@@ -19,4 +19,4 @@ sudo mv $SPARK_DEFAULTS_CONF_FILE_NAME ARCHIVED-$SPARK_DEFAULTS_CONF_FILE_NAME
 sudo wget $GITHUB_REPO_RAW_PATH/.config/$SPARK_DEFAULTS_CONF_FILE_NAME
 sudo dos2unix $SPARK_DEFAULTS_CONF_FILE_NAME
 
-echo `df -h /` Spark Defaults Conf >> $MAIN_DISK_USAGE_LOG
+echo `df -h / | sed -n 2p` Spark Defaults Conf >> $MAIN_DISK_USAGE_LOG
