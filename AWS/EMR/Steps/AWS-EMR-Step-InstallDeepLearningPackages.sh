@@ -14,7 +14,7 @@ source ~/.EnvVars
 
 
 # change directory to Temp folder to install NVIDIA driver & CUDA toolkit
-cd $TMPDIR
+cd $TMP_DIR
 
 
 # install NVIDIA driver
@@ -27,14 +27,14 @@ cd $TMPDIR
 # Recommended/Beta: Recommended/Certified
 wget http://us.download.nvidia.com/XFree86/Linux-x86_64/358.16/NVIDIA-Linux-x86_64-358.16.run
 set +e
-sudo sh NVIDIA-Linux-x86_64-358.16.run --silent --kernel-source-path $KERNEL_SOURCE_PATH --tmpdir $TMPDIR
+sudo sh NVIDIA-Linux-x86_64-358.16.run --silent --kernel-source-path $KERNEL_SOURCE_PATH --tmpdir $TMP_DIR
 set -e
 
 
 # install CUDA toolkit
 wget http://developer.download.nvidia.com/compute/cuda/7.5/Prod/local_installers/cuda_7.5.18_linux.run
-sudo sh cuda_7.5.18_linux.run --silent --driver --toolkit --toolkitpath $CUDA_ROOT --extract $TMPDIR --kernel-source-path $KERNEL_SOURCE_PATH --tmpdir $TMPDIR
-sudo sh cuda-linux64-rel-7.5.18-19867135.run --noprompt --prefix $CUDA_ROOT --tmpdir $TMPDIR
+sudo sh cuda_7.5.18_linux.run --silent --driver --toolkit --toolkitpath $CUDA_ROOT --extract $TMP_DIR --kernel-source-path $KERNEL_SOURCE_PATH --tmpdir $TMP_DIR
+sudo sh cuda-linux64-rel-7.5.18-19867135.run --noprompt --prefix $CUDA_ROOT --tmpdir $TMP_DIR
 
 # add CUDA executables & libraries to Path
 # instructions: Please make sure that
