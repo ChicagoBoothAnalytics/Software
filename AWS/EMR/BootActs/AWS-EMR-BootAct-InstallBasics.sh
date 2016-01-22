@@ -177,8 +177,7 @@ sudo pip install --upgrade Py4J
 wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_csv.py
 
 
-# install R & RStudio Server
-sudo yum install -y R
+# install RStudio Server
 sudo yum install -y --nogpgcheck https://download2.rstudio.org/rstudio-server-rhel-0.99.491-x86_64.rpm
 
 
