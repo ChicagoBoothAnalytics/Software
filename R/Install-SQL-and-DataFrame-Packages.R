@@ -3,8 +3,11 @@ install.packages(c(
   'DBI',
   'dplyr',
   'reshape2',
+  'RH2',
+  'RJDBC',
   'RMySQL',
   'RPostgreSQL',
-  'RSQLite'),
+  'RSQLite',
+  'sqldf'),
   dependencies=TRUE,
   repos='http://cran.rstudio.com')
