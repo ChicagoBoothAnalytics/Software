@@ -9,7 +9,7 @@ conda update sqlalchemy
 
 
 # install commonly-applicable drivers
-pip install --upgrade Egenix-mxODBC
+# pip install --upgrade Egenix-mxODBC   SKIPPED: installation fails on Mac
 conda install PyODBC
 conda update pyodbc
 
@@ -27,8 +27,7 @@ pip install --upgrade AdoDBAPI
 # pip install --upgrade CyMySQL   SKIPPED: requires C++
 conda install MySQL-Connector-Python
 conda update mysql-connector-python
-conda install MySQL-Python
-conda update mysql-python
+# pip install --upgrade MySQL-Python   SKIPPED: requires MySQL software
 # pip install --upgrade OurSQL   SKIPPED: requires Cython extension
 conda install PyMySQL
 conda update pymysql

@@ -15,7 +15,7 @@ conda update nltk
 
 
 # install Machine Learning packages
-pip install --upgrade MLpy --no-dependencies
+# pip install --upgrade MLpy --no-dependencies   SKIPPED: installation fails on Mac
 conda install Orange
 conda update orange
 pip install --upgrade SKLearn-Pandas --no-dependencies
