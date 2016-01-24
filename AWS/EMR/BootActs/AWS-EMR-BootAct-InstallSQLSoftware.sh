@@ -112,10 +112,10 @@ echo `df -h / | sed -n 2p` PG8000 >> $MAIN_DISK_USAGE_LOG
 # echo `df -h / | sed -n 2p` Py-PostgreSQL >> $MAIN_DISK_USAGE_LOG
 
 sudo yum install -y python-psycopg2
-sudo pip install --upgrade psycopg2
+sudo pip install --upgrade PsycoPG2
 echo `df -h / | sed -n 2p` PsycoPG2 >> $MAIN_DISK_USAGE_LOG
 
-sudo pip install --upgrade psycopg2cffi
+sudo pip install --upgrade PsycoPG2CFFI
 echo `df -h / | sed -n 2p` PsycoPG2CFFI >> $MAIN_DISK_USAGE_LOG
 
 curl https://jdbc.postgresql.org/download/postgresql-9.4.1207.jar --output PostgreSQL-JDBC42-9.4.1207.jar

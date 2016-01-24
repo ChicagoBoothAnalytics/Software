@@ -38,11 +38,11 @@ conda update pymysql
 pip install --upgrade PG8000
 # pip install --upgrade Py-PostgreSQL   SKIPPED: for Python 3.1 and greater only
 
-conda install psycopg2
+conda install PsycoPG2
 conda update psycopg2
-# for pyscopg2 on Windows, go here: http://www.lfd.uci.edu/~gohlke/pythonlibs/#psycopg,
+# for PsycoPG2 on Windows, go here: http://www.lfd.uci.edu/~gohlke/pythonlibs/#psycopg,
 # download a .whl file appropriate for your Windows machine's processor (32-bit / 64-bit),
 # enter a command-line terminal, navigate to the download folder, and
 # run command: pip install <the-downloaded-file-name.whl>
 
-# pip install --upgrade psycopg2cffi   SKIPPED: requires PostgreSQL installed
+# pip install --upgrade PsycoPG2CFFI   SKIPPED: requires PostgreSQL installed
