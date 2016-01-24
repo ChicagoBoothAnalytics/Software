@@ -24,19 +24,25 @@ pip install --upgrade AdoDBAPI
 
 
 # download / install MySQL drivers
-# pip install --upgrade CyMySQL   SKIP: requires C++
+# pip install --upgrade CyMySQL   SKIPPED: requires C++
 conda install MySQL-Connector-Python
 conda update mysql-connector-python
 conda install MySQL-Python
-conda update MySQL-Python
-# pip install --upgrade OurSQL   SKIP: requires Cython extension
+conda update mysql-python
+# pip install --upgrade OurSQL   SKIPPED: requires Cython extension
 conda install PyMySQL
 conda update pymysql
 
 
 # download / install PostgreSQL drivers
 pip install --upgrade PG8000
-# pip install --upgrade Py-PostgreSQL   SKIP: for Python 3.1 and greater only
-conda install psycopg2   # for Windows, install from .whl here: http://www.lfd.uci.edu/~gohlke/pythonlibs/#psycopg
+# pip install --upgrade Py-PostgreSQL   SKIPPED: for Python 3.1 and greater only
+
+conda install psycopg2
 conda update psycopg2
-# pip install --upgrade psycopg2cffi   SKIP: requires PostgreSQL installed
+# for pyscopg2 on Windows, go here: http://www.lfd.uci.edu/~gohlke/pythonlibs/#psycopg,
+# download a .whl file appropriate for your Windows machine's processor (32-bit / 64-bit),
+# enter a command-line terminal, navigate to the download folder, and
+# run command: pip install <the-downloaded-file-name.whl>
+
+# pip install --upgrade psycopg2cffi   SKIPPED: requires PostgreSQL installed
