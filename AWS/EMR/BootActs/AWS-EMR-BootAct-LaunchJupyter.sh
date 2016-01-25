@@ -33,17 +33,12 @@ then
 
 
     # install iJulia kernel
-    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
-    dos2unix AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
+    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-InstallJupyterIJuliaKernel.jl
+    dos2unix AWS-EMR-BootAct-InstallJupyterIJuliaKernel.jl
     set +e
-    julia AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
+    julia AWS-EMR-BootAct-InstallJupyterIJuliaKernel.jl
     set -e
-    sudo rm AWS-EMR-BootAct-AddJupyterIJuliaKernelPackage.jl
-
-    wget $GITHUB_REPO_RAW_PATH/BootActs/AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
-    dos2unix AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
-    julia AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
-    sudo rm AWS-EMR-BootAct-BuildJupyterIJuliaKernelPackage.jl
+    sudo rm AWS-EMR-BootAct-InstallJupyterIJuliaKernel.jl
 
     echo `df -h / | sed -n 2p` Jupyter iJulia Kernel >> $MAIN_DISK_USAGE_LOG
 
