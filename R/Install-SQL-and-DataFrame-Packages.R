@@ -2,6 +2,7 @@ install.packages(
   c('data.table',
     'DBI',
     'dplyr',
+    'plyr',
     'reshape2',
     'RH2',
     'RJDBC',
