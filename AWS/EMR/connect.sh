@@ -1,7 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+
 
 PORT=8133
 MONITORING_PORT=4040
+
 
 # parse command-line options
 while getopts "d:" opt
@@ -13,11 +15,11 @@ do
     esac
 done
 
+
 # connect to AWS EMR Cluster's iPython Notebook via a pipe
 echo "Please open LOCALHOST:$PORT on your web browser"
 ssh -o ServerAliveInterval=10 -i keypair.pem -N -L $PORT:$AWS_EMR_CLUSTER_PUBLIC_DNS:$PORT hadoop@$AWS_EMR_CLUSTER_PUBLIC_DNS
 
-# ssh -o ServerAliveInterval=10 -i keypair.pem -N -L 4040:ec2-52-53-239-92.us-west-1.compute.amazonaws.com:4040 hadoop@ec2-52-53-239-92.us-west-1.compute.amazonaws.com
 
-# ssh -o ServerAliveInterval=10 -i keypair.pem -N -L 5006:ec2-52-53-210-250.us-west-1.compute.amazonaws.com:5006 hadoop@ec2-52-53-210-250.us-west-1.compute.amazonaws.com
-
+# to monitor Spark cluster:
+# ssh -o ServerAliveInterval=10 -i keypair.pem -N -L 4040:<Cluster Master DNS>:4040 hadoop@<Cluster Master DNS>
