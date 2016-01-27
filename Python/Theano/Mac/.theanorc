@@ -51,10 +51,6 @@ fastmath = True
 ldflags = -L/usr/lib -L/Applications/anaconda/lib -L/usr/local/cuda/lib -lblas
 
 
-[pycuda]
-init = True
-
-
 [tensor]
 local_elemwise_fusion = True
 
