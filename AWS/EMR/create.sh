@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 # parse command-line options
@@ -50,77 +50,93 @@ AWS_REGION=us-west-1
 
 # upload AWS EMR Bootstrap Action & Step scripts to S3 Bucket
 echo "Uploading AWS EMR Bootstrap Action & Step scripts to s3://$S3_BUCKET_NAME..."
+
 dos2unix BootActs/*.sh
 dos2unix Steps/*.sh
+
 aws s3 cp \
     BootActs/$AWS_EMR_BOOTACT_INSTALL_BASICS_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_BOOTACT_INSTALL_BASICS_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     BootActs/$AWS_EMR_BOOTACT_INSTALL_SQL_SOFTWARE_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_BOOTACT_INSTALL_SQL_SOFTWARE_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     BootActs/$AWS_EMR_BOOTACT_INSTALL_SCIPY_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_BOOTACT_INSTALL_SCIPY_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     BootActs/$AWS_EMR_BOOTACT_LAUNCH_JUPYTER_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_BOOTACT_LAUNCH_JUPYTER_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     Steps/$AWS_EMR_STEP_SET_SPARK_DEFAULTS_CONF_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_SET_SPARK_DEFAULTS_CONF_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     Steps/$AWS_EMR_STEP_INSTALL_VISUALIZATION_PACKAGES_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_VISUALIZATION_PACKAGES_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     Steps/$AWS_EMR_STEP_INSTALL_SCIKITS_AND_ML_PACKAGES_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_SCIKITS_AND_ML_PACKAGES_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     Steps/$AWS_EMR_STEP_INSTALL_GRAPH_AND_NETWORK_PACKAGES_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_GRAPH_AND_NETWORK_PACKAGES_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     Steps/$AWS_EMR_STEP_INSTALL_GEOSPATIAL_PACKAGES_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_GEOSPATIAL_PACKAGES_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     Steps/$AWS_EMR_STEP_INSTALL_DEEP_LEARNING_PACKAGES_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_DEEP_LEARNING_PACKAGES_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     Steps/$AWS_EMR_STEP_INSTALL_CHICAGOBOOTHML_HELPY_PACKAGE_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_CHICAGOBOOTHML_HELPY_PACKAGE_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     .config/$ENV_VARS_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$ENV_VARS_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 aws s3 cp \
     .config/$THEANORC_SCRIPT_NAME \
     s3://$S3_BUCKET_NAME/$THEANORC_SCRIPT_NAME \
     --region $AWS_REGION \
     --no-verify-ssl
+
 echo "done!"
 
 
 echo "Bidding for AWS EMR cluster with 1 x $MASTER_INSTANCE_TYPE Master @ \$$MASTER_INSTANCE_PRICE/node/hr + $NB_WORKER_NODES x $WORKER_INSTANCE_TYPE Core Workers @ \$$WORKER_INSTANCE_PRICE/node/hr..."
+
 aws emr create-cluster \
     --name \
         "1 x $MASTER_INSTANCE_TYPE Master @ \$$MASTER_INSTANCE_PRICE/node/hr + $NB_WORKER_NODES x $WORKER_INSTANCE_TYPE Core Workers @ \$$WORKER_INSTANCE_PRICE/node/hr: $REMARKS" \
@@ -153,4 +169,5 @@ aws emr create-cluster \
         Type=CUSTOM_JAR,Jar=$AWS_EMR_SCRIPT_RUNNER_JAR,Args=s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_GEOSPATIAL_PACKAGES_SCRIPT_NAME,Name=$AWS_EMR_STEP_INSTALL_GEOSPATIAL_PACKAGES_SCRIPT_NAME,ActionOnFailure=TERMINATE_CLUSTER \
         Type=CUSTOM_JAR,Jar=$AWS_EMR_SCRIPT_RUNNER_JAR,Args=s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_DEEP_LEARNING_PACKAGES_SCRIPT_NAME,Name=$AWS_EMR_STEP_INSTALL_DEEP_LEARNING_PACKAGES_SCRIPT_NAME,ActionOnFailure=TERMINATE_CLUSTER \
         Type=CUSTOM_JAR,Jar=$AWS_EMR_SCRIPT_RUNNER_JAR,Args=s3://$S3_BUCKET_NAME/$AWS_EMR_STEP_INSTALL_CHICAGOBOOTHML_HELPY_PACKAGE_SCRIPT_NAME,Name=$AWS_EMR_STEP_INSTALL_CHICAGOBOOTHML_HELPY_PACKAGE_SCRIPT_NAME,ActionOnFailure=TERMINATE_CLUSTER
-echo "Please check your AWS EMR Console for your cluster's status."
+
+echo "For your cluster's status, please check: $AWS_REGION.console.aws.amazon.com/elasticmapreduce"
