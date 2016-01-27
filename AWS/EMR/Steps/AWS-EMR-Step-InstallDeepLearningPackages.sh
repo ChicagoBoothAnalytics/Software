@@ -279,7 +279,7 @@ echo `df -h / | sed -n 2p` SKFlow >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade Theanets
 echo `df -h / | sed -n 2p` Theanets >> $MAIN_DISK_USAGE_LOG
 
-sudo pip install --upgrade git+git://github.com/Samsung/veles.git
-echo `df -h / | sed -n 2p` Veles >> $MAIN_DISK_USAGE_LOG
+# sudo pip install --upgrade git+git://github.com/Samsung/veles.git
+# echo `df -h / | sed -n 2p` Veles >> $MAIN_DISK_USAGE_LOG
 
-git clone https://github.com/Samsung/veles.znicz
+# git clone https://github.com/Samsung/veles.znicz
