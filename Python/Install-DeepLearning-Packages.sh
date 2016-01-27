@@ -3,6 +3,13 @@
 # this script requires an existing installation of Anaconda Python
 
 
+# supporting packages for Windows only
+conda install LibPython
+conda update libpython
+conda install MinGW
+conda update mingw
+
+
 # Theano
 pip install --upgrade Theano --no-dependencies
 
