@@ -148,7 +148,7 @@ aws emr create-cluster \
     --no-auto-terminate \
     --use-default-roles \
     --log-uri \
-        s3://mbalearnstocode-spark/zzzLogs \
+        s3://$S3_BUCKET_NAME/zzzLogs \
     --ec2-attributes \
         KeyName=keypair \
     --no-termination-protected \
