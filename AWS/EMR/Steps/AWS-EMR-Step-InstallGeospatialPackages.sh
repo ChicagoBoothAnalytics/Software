@@ -52,8 +52,8 @@ echo `df -h / | sed -n 2p` GoogleMaps >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade PyProj
 echo `df -h / | sed -n 2p` PyProj >> $MAIN_DISK_USAGE_LOG
 
-sudo pip install --upgrade PySAL
-echo `df -h / | sed -n 2p` PySAL >> $MAIN_DISK_USAGE_LOG
+# sudo pip install --upgrade PySAL   SKIPPED: somehow this makes GPU master node hang...
+# echo `df -h / | sed -n 2p` PySAL >> $MAIN_DISK_USAGE_LOG
 
 # brew install gdal
 # sudo pip install --upgrade Fiona   # depends on GDAL
