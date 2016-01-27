@@ -1,0 +1,17 @@
+install.packages(
+  c('arules',
+    'caret',
+    'gbm',
+    'randomForest',
+    'h2o',
+    'kknn',
+    'nnet',
+    'parRF',
+    'randomForest',
+    'recommenderlab',
+    'ROCR',
+    'rpart',
+    'stepPlr',
+    'tree'),
+  dependencies=TRUE,
+  repos='http://cran.rstudio.com')
