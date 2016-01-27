@@ -5,6 +5,10 @@ PORT=8133
 MONITORING_PORT=4040
 
 
+# open Jupyter notebook on web browser
+python -m webbrowser http://localhost:$PORT
+
+
 # parse command-line options
 while getopts "d:" opt
 do
