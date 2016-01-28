@@ -48,4 +48,4 @@ conda update psycopg2
 
 
 # install Jupyter SQL "magic"
-pip install ipython-sql
+pip install iPython-SQL

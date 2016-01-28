@@ -56,7 +56,7 @@ then
 
 
     # install SQL Jupyter "magic"
-    sudo pip install ipython-sql
+    sudo pip install iPython-SQL
 
 
     # launch Jupyter as "no hang-up" background process
