@@ -45,3 +45,7 @@ conda update psycopg2
 # run command: pip install <the-downloaded-file-name.whl>
 
 # pip install --upgrade PsycoPG2CFFI   SKIPPED: requires PostgreSQL installed
+
+
+# install Jupyter SQL "magic"
+pip install ipython-sql

@@ -55,6 +55,10 @@ then
     echo `df -h / | sed -n 2p` Jupyter Scala Kernel >> $MAIN_DISK_USAGE_LOG
 
 
+    # install SQL Jupyter "magic"
+    sudo pip install ipython-sql
+
+
     # launch Jupyter as "no hang-up" background process
     cd ~
     nohup /usr/local/bin/ipython notebook --no-browser &
