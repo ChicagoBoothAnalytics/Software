@@ -19,7 +19,8 @@ done
 echo "Opening LOCALHOST:$PORT on your web browser..."
 python -m webbrowser http://localhost:$PORT
 
-echo "Please enter 'yes' if asked 'Are you sure you want to continue connecting (yes/no)?' below; then please wait a few seconds."
+echo "Please enter 'yes' if asked 'Are you sure you want to continue connecting (yes/no)?' below."
+echo "If the web browser window does not auto-refresh after a few seconds, manually refresh it to see the Jupyter Notebook environment."
 # connect to AWS EMR Cluster's Jupyter Notebook environment via a pipe
 ssh -o ServerAliveInterval=10 -i keypair.pem -N -L $PORT:$AWS_EMR_CLUSTER_PUBLIC_DNS:$PORT hadoop@$AWS_EMR_CLUSTER_PUBLIC_DNS
 
