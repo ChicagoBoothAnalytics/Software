@@ -178,7 +178,7 @@ sudo ln -s /usr/bin/pip-2.7 /usr/bin/pip
 # install basic Python packages
 
 # Cython   SKIPPED: takes long
-# sudo pip install --upgrade Cython
+sudo pip install --upgrade Cython
 # echo `df -h / | sed -n 2p` Cython >> $MAIN_DISK_USAGE_LOG
 
 # FindSpark
