@@ -129,15 +129,17 @@ echo `df -h / | sed -n 2p` LibSodium >> $MAIN_DISK_USAGE_LOG
 
 
 # install ZeroMQ
-git clone https://github.com/zeromq/libzmq
-cd libzmq
+wget http://download.zeromq.org/zeromq-4.1.4.tar.gz
+tar xzf zeromq-*.tar.gz
+sudo rm zeromq-*.tar.gz
+cd zeromq-*
 ./autogen.sh
 ./configure --prefix=$ZMQ_DIR
 make
 sudo make install
 sudo ldconfig
 cd ..
-sudo rm -r libzmq
+sudo rm -r zeromq-*
 echo `df -h / | sed -n 2p` ZeroMQ >> $MAIN_DISK_USAGE_LOG
 
 
