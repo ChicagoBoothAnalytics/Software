@@ -1,4 +1,5 @@
 install.packages(
-  c('lubridate'),
+  c('lubridate',
+    'Rcpp'),
   dependencies=TRUE,
   repos='http://cran.rstudio.com')
