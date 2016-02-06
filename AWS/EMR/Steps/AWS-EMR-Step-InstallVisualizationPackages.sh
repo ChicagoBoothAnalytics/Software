@@ -38,3 +38,9 @@ echo `df -h / | sed -n 2p` Cufflinks >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade Seaborn
 echo `df -h / | sed -n 2p` Seaborn >> $MAIN_DISK_USAGE_LOG
+
+
+# install R GGplot2
+wget https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/R/Install-Visualization-Packages.R
+sudo Rscript Install-Visualization-Packages.R
+sudo rm Install-Visualization-Packages.R
