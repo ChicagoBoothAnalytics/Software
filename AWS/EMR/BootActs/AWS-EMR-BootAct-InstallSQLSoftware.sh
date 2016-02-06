@@ -134,7 +134,7 @@ cp sqlite-jdbc/lib/jdbc-api-1.4.jar SQLite-JDBC-1.4.jar
 
 
 # install R SQL-related packages
-wget $GITHUB_REPO_RAW_PATH/R/Install-SQL-and-DataFrame-Packages.R
+wget https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/R/Install-SQL-and-DataFrame-Packages.R
 # temporarily turn off the error trap because the below installation script fails for
 # following dependencies: "car", "caret", "dplyr" & "plm"
 set +e
