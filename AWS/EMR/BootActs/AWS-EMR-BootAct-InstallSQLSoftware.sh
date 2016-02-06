@@ -131,3 +131,13 @@ cp sqlite-jdbc/lib/jdbc-api-1.4.jar SQLite-JDBC-1.4.jar
 
 # install Sybase drivers
 # sudo pip install --upgrade git+git://github.com/fbessho/python-sybase.git   skip: requires Sybase software installed
+
+
+# install R SQL-related packages
+wget $GITHUB_REPO_RAW_PATH/R/Install-SQL-and-DataFrame-Packages.R
+# temporarily turn off the error trap because the below installation script fails for
+# following dependencies: "car", "caret", "dplyr" & "plm"
+set +e
+sudo Rscript Install-SQL-and-DataFrame-Packages.R
+set -e
+sudo rm Install-SQL-and-DataFrame-Packages.R
