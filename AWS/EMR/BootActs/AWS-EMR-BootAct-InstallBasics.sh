@@ -206,6 +206,12 @@ wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_c
 sudo pip install --upgrade PyZMQ
 
 
+# install R basics
+wget https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/R/Install-Basic-Packages.R
+sudo Rscript Install-Basic-Packages.R
+sudo rm Install-Basic-Packages.R
+
+
 # install Julia
 wget https://junolab.s3.amazonaws.com/release/1.1.0/juno-linux-x64.zip
 unzip juno-linux-x64.zip
