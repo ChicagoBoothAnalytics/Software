@@ -202,6 +202,9 @@ echo `df -h / | sed -n 2p` Py4J >> $MAIN_DISK_USAGE_LOG
 # PySpark_CSV
 wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_csv.py
 
+# PyZMQ
+sudo pip install --upgrade PyZMQ
+
 
 # install Julia
 wget https://junolab.s3.amazonaws.com/release/1.1.0/juno-linux-x64.zip
