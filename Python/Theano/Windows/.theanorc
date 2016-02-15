@@ -34,12 +34,12 @@ reoptimize_unpickled_function = False
 
 [cuda]
 # *** NOTE ***: edit this to the path of your CUDA Toolkit installation folder
-root = "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v7.5"
+root = "C:/Applications/NVIDIA/CUDA/v7.5"
 
 
 [nvcc]
-# *** NOTE ***: edit this to the path of the folder containing the gcc.exe & g++.exe files on your Windows machine
-compiler_bindir = C:/Applications/TDM-GCC-64/bin
+# *** NOTE ***: on Windows, edit this to <your Microsoft Visual Studio Community 2013 installation folder>/VC/bin
+compiler_bindir = C:/Applications/Microsoft Visual Studio 12.0/VC/bin
 fastmath = True
 
 
