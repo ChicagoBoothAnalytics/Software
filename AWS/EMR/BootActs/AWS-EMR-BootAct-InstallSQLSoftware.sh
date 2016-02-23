@@ -35,6 +35,10 @@ sudo pip install --upgrade CSVkit
 echo `df -h / | sed -n 2p` CSVkit >> $MAIN_DISK_USAGE_LOG
 
 
+# install XlRd
+sudo pip install --upgrade XlRd
+
+
 # install commonly-applicable drivers
 sudo pip install --upgrade Egenix-mxODBC
 echo `df -h / | sed -n 2p` Egenix-mxODBC >> $MAIN_DISK_USAGE_LOG

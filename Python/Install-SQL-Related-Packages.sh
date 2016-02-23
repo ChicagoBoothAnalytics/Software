@@ -3,6 +3,16 @@
 # this script requires an existing installation of Anaconda Python
 
 
+# install / update CSVkit
+conda install CSVkit
+conda update csvkit
+
+
+# install / update XlRd
+conda install XlRd
+conda update xlrd
+
+
 # install / update SQLalchemy
 conda install SQLalchemy
 conda update sqlalchemy
