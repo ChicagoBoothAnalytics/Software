@@ -17,6 +17,7 @@ int_division = raise
 cxx = /usr/bin/g++
 mode = FAST_RUN
 optimizer = fast_run
+optimizer_excluding = inplace
 optimizer_verbose = False
 on_opt_error = warn
 check_input = True
