@@ -1,5 +1,9 @@
 install.packages(
-    c('dygraphs',
-      'ggplot2',
-      'plotly'),
-    repos='http://cran.rstudio.com')
+  c('dygraphs',
+    'GGally',
+    'ggplot2',
+    'grid',
+    'gridExtra',
+    'lattice',
+    'plotly'),
+  repos='http://cran.rstudio.com')
