@@ -147,5 +147,9 @@ set -e
 sudo rm Install-SQL-and-DataFrame-Packages.R
 
 
+# install Ibis
+sudo pip install --upgrade Ibis-Framework
+
+
 # install Impyla
 sudo pip install --upgrade Impyla

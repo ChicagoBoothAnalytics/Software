@@ -61,5 +61,9 @@ conda update psycopg2
 pip install --upgrade iPython-SQL
 
 
+# install Ibis
+pip install --upgrade Ibis-Framework
+
+
 # install Impyla
 pip install --upgrade Impyla
