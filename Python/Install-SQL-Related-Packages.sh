@@ -58,4 +58,8 @@ conda update psycopg2
 
 
 # install Jupyter SQL "magic"
-pip install iPython-SQL
+pip install --upgrade iPython-SQL
+
+
+# install Impyla
+pip install --upgrade Impyla

@@ -145,3 +145,7 @@ set +e
 sudo Rscript Install-SQL-and-DataFrame-Packages.R
 set -e
 sudo rm Install-SQL-and-DataFrame-Packages.R
+
+
+# install Impyla
+sudo pip install --upgrade Impyla
