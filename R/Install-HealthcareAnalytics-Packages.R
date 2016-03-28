@@ -1,4 +1,4 @@
 install.packages(
   c('icd9'),
   dependencies=TRUE,
-  repos='http://cran.rstudio.com')
+  repos='http://ftp.ussg.iu.edu/CRAN')
