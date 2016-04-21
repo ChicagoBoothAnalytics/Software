@@ -1,5 +1,6 @@
 install.packages(
-  c('matchingMarkets',
+  c('clue',
+    'matchingMarkets',
     'matchingR',
     'PlayerRatings',
     'trueskill'),
