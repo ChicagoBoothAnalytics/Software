@@ -1,5 +1,7 @@
 install.packages(
   c('matchingMarkets',
-    'matchingR'),
+    'matchingR',
+    'PlayerRatings',
+    'trueskill'),
   dependencies=TRUE,
   repos='http://cran.rstudio.com')
