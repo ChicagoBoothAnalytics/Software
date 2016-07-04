@@ -72,6 +72,9 @@ echo `df -h / | sed -n 2p` AdoDBAPI >> $MAIN_DISK_USAGE_LOG
 
 
 # download / install MySQL Python & JDBC drivers
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "MySQL Database"
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "MySQL Database Client"
+
 sudo yum install -y mysql
 sudo yum install -y mysql-devel
 echo `df -h / | sed -n 2p` MySQL YUM Packages >> $MAIN_DISK_USAGE_LOG
@@ -105,6 +108,9 @@ wget http://download.oracle.com/otn/utilities_drivers/jdbc/11204/ojdbc6.jar -O O
 
 
 # download / install PostgreSQL Python & JDBC drivers
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "PostgreSQL Database Server (Version 8)"
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "PostgreSQL Database Client (Version 8)"
+
 sudo yum install -y postgresql
 sudo yum install -y postgresql-devel
 echo `df -h / | sed -n 2p` PostgreSQL YUM Packages >> $MAIN_DISK_USAGE_LOG
