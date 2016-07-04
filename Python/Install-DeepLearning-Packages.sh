@@ -10,6 +10,10 @@ conda install MinGW
 conda update mingw
 
 
+# CUDA
+conda install CUDAToolkit
+
+
 # Theano
 pip install --upgrade Theano --no-dependencies
 
