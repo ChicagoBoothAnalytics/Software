@@ -109,8 +109,8 @@ echo `df -h / | sed -n 2p` Misc. Packages >> $MAIN_DISK_USAGE_LOG
 
 
 # install HDF5
-sudo yum install -y http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
-sudo yum install -y http://www.hdfgroup.org/ftp/HDF5/current/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
+sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
+sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
 echo `df -h / | sed -n 2p` HDF5 >> $MAIN_DISK_USAGE_LOG
 
 
