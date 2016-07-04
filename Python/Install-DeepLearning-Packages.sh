@@ -12,6 +12,7 @@ conda update mingw
 
 # CUDA
 conda install CUDAToolkit
+conda update cudatoolkit
 
 
 # Theano
