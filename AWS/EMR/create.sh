@@ -6,7 +6,7 @@ while getopts "b:m:p:n:t:q:r:" opt
 do
     case $opt in
         b)
-            S3_BUCKET_NAME=$OPTARG
+            S3_BUCKET_NAME=$OPTARG/AWS-EMR
             ;;
         m)
             MASTER_INSTANCE_TYPE=$OPTARG
