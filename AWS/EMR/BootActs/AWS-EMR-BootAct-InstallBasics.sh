@@ -33,8 +33,6 @@ source .EnvVars
 # download additional Yum Repo specs files
 cd /etc/yum.repos.d
 sudo wget $GITHUB_REPO_RAW_PATH/YumRepos/fedora.repo
-sudo wget $GITHUB_REPO_RAW_PATH/YumRepos/google-chrome.repo
-sudo rpm --import https://dl-ssl.google.com/linux/linux_signing_key.pub
 echo `df -h / | sed -n 2p` YUM Repo Files >> $MAIN_DISK_USAGE_LOG
 cd $APPS_DIR
 
@@ -44,14 +42,10 @@ sudo yum update -y
 echo `df -h / | sed -n 2p` YUM Update All Packages >> $MAIN_DISK_USAGE_LOG
 
 
-# install essential Development Tools
-sudo yum groupinstall -y "Development Tools"
-echo `df -h / | sed -n 2p` Development Tools >> $MAIN_DISK_USAGE_LOG
-
-
-# install Performance Tools
-sudo yum groupinstall -y "Performance Tools"
-echo `df -h / | sed -n 2p` Performance Tools >> $MAIN_DISK_USAGE_LOG
+# install essential Development Libraries & Tools
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "Development Libraries"
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "Development Tools"
+echo `df -h / | sed -n 2p` Development Libraries and Tools >> $MAIN_DISK_USAGE_LOG
 
 
 # re-install compatible kernel source files
@@ -61,56 +55,30 @@ echo `df -h / | sed -n 2p` Kernel-Devel >> $MAIN_DISK_USAGE_LOG
 
 
 # install C, C++ & ForTran compilers
-sudo yum install -y gcc
-sudo yum install -y gcc-c++
-sudo yum install -y gcc-gfortran
-echo `df -h / | sed -n 2p` Compilers >> $MAIN_DISK_USAGE_LOG
+# sudo yum install -y gcc gcc-c++ gcc-gfortran   # SKIPPED: already covered under Development Tools
+# echo `df -h / | sed -n 2p` Compilers >> $MAIN_DISK_USAGE_LOG
 
 
-# install numerical libraries
-sudo yum install -y atlas-devel
-sudo yum install -y blas
-sudo yum install -y blas-devel
-sudo yum install -y lapack-devel
-echo `df -h / | sed -n 2p` BLASes >> $MAIN_DISK_USAGE_LOG
-
-
-# install Boost
-sudo yum install -y boost
-echo `df -h / | sed -n 2p` Boost >> $MAIN_DISK_USAGE_LOG
-
-
-# install CMake
-sudo yum install -y cmake
-echo `df -h / | sed -n 2p` CMake >> $MAIN_DISK_USAGE_LOG
-
-
-# install Git
-sudo yum install -y git
-echo `df -h / | sed -n 2p` Git >> $MAIN_DISK_USAGE_LOG
+# install scientific libraries
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "Scientific Support"
+sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "TeX Support"
+# sudo yum install -y atlas atlas-devel blas blas-devel lapack lapack-devel   # SKIPPED: already covered under Scientific Support
+echo `df -h / | sed -n 2p` Scientific Support >> $MAIN_DISK_USAGE_LOG
 
 
 # install some other packages
-sudo yum install -y cairo-devel
+sudo yum install -y cairo cairo-devel
 sudo yum install -y glib*
-sudo yum install -y graphviz
-sudo yum install -y graphviz-devel
-sudo yum install -y libcurl-devel
-sudo yum install -y libffi-devel
-sudo yum install -y libjpeg-devel
-sudo yum install -y libssh2-devel
-sudo yum install -y libuuid-devel
-sudo yum install -y libxml2-devel
-sudo yum install -y ncurses-devel
-sudo yum install -y openssl-devel
-sudo yum install -y patch
-sudo yum install -y zlib-devel
+sudo yum install -y graphviz graphviz-devel
+sudo yum install -y libffi libffi-devel
+sudo yum install -y libjpeg libjpeg-devel
+sudo yum install -y libssh2 libssh2-devel
+sudo yum install -y libuuid libuuid-devel
 echo `df -h / | sed -n 2p` Misc. Packages >> $MAIN_DISK_USAGE_LOG
 
 
 # install HDF5
-sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
-sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
+sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
 echo `df -h / | sed -n 2p` HDF5 >> $MAIN_DISK_USAGE_LOG
 
 
@@ -129,7 +97,7 @@ echo `df -h / | sed -n 2p` LibSodium >> $MAIN_DISK_USAGE_LOG
 
 
 # install ZeroMQ
-wget http://download.zeromq.org/zeromq-4.1.4.tar.gz
+wget https://github.com/zeromq/zeromq4-1/releases/download/v4.1.5/zeromq-4.1.5.tar.gz
 tar xzf zeromq-*.tar.gz
 sudo rm zeromq-*.tar.gz
 cd zeromq-*
@@ -143,33 +111,6 @@ sudo rm -r zeromq-*
 echo `df -h / | sed -n 2p` ZeroMQ >> $MAIN_DISK_USAGE_LOG
 
 
-# install EPLL Release package
-# ref: https://lambda-linux.io
-curl -X GET -o RPM-GPG-KEY-lambda-epll https://lambda-linux.io/RPM-GPG-KEY-lambda-epll
-sudo rpm --import RPM-GPG-KEY-lambda-epll
-curl -X GET -o epll-release-2015.09-1.1.ll1.noarch.rpm https://lambda-linux.io/epll-release-2015.09-1.1.ll1.noarch.rpm
-sudo yum install -y epll-release-2015.09-1.1.ll1.noarch.rpm
-sudo rm RPM-GPG-KEY-lambda-epll
-sudo rm epll-release-2015.09-1.1.ll1.noarch.rpm
-echo `df -h / | sed -n 2p` EPLL >> $MAIN_DISK_USAGE_LOG
-
-
-# install Firefox
-# ref: https://lambda-linux.io/blog/2015/01/28/announcing-firefox-browser-support-for-amazon-linux
-sudo yum --enablerepo=epll install -y firefox-compat
-wget -O firefox-latest.tar.bz2 "https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-bzcat firefox-latest.tar.bz2 | tar xvf -
-sudo rm firefox-latest.tar.bz2
-echo `df -h / | sed -n 2p` Firefox-Supporting Packages >> $MAIN_DISK_USAGE_LOG
-
-
-# install LinuxBrew
-git clone https://github.com/Homebrew/linuxbrew.git $LINUXBREW_HOME
-sudo ln -s $(which gcc) `brew --prefix`/bin/gcc-$(gcc -dumpversion |cut -d. -f1,2)
-sudo ln -s $(which g++) `brew --prefix`/bin/g++-$(g++ -dumpversion |cut -d. -f1,2)
-sudo ln -s $(which gfortran) `brew --prefix`/bin/gfortran-$(gfortran -dumpversion |cut -d. -f1,2)
-
-
 # make Python 2.7 default Python
 sudo rm /usr/bin/python
 sudo rm /usr/bin/pip
@@ -179,7 +120,7 @@ sudo ln -s /usr/bin/pip-2.7 /usr/bin/pip
 
 # install basic Python packages
 
-# Cython   SKIPPED: takes long
+# Cython
 sudo pip install --upgrade Cython
 echo `df -h / | sed -n 2p` Cython >> $MAIN_DISK_USAGE_LOG
 
@@ -213,15 +154,15 @@ sudo rm Install-Basic-Packages.R
 
 
 # install Julia
-wget https://junolab.s3.amazonaws.com/release/1.1.0/juno-linux-x64.zip
-unzip juno-linux-x64.zip
-sudo rm juno-linux-x64.zip
-sudo ln -s $APPS_DIR/juno-linux64/resources/app/julia/bin/julia /usr/bin/julia
-sudo ln -s $APPS_DIR/juno-linux64/resources/app/julia/bin/julia-debug /usr/bin/julia-debug
+wget https://julialang.s3.amazonaws.com/bin/linux/x64/0.4/julia-0.4.6-linux-x86_64.tar.gz
+tar xzf julia-*.tar.gz
+sudo rm julia-*.tar.gz
+sudo ln -s $APPS_DIR/julia-*/bin/julia /usr/bin/julia
+sudo ln -s $APPS_DIR/julia-*/bin/julia-debug /usr/bin/julia-debug
 
 
 # install Scala
-wget http://downloads.typesafe.com/scala/2.11.7/scala-2.11.7.tgz
+wget http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz
 tar xvf scala-*.tgz
 sudo rm scala-*.tgz
 sudo ln -s $APPS_DIR/scala-*/bin/fsc /usr/bin/fsc
