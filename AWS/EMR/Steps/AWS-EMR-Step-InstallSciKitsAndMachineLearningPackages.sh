@@ -14,7 +14,6 @@ source ~/.EnvVars
 
 
 # install certain popular SkiKits: http://scikits.appspot.com/scikits
-sudo yum install -y libjpeg libjpeg-devel
 sudo pip install --upgrade SciKit-Image
 echo `df -h / | sed -n 2p` SciKit-Image >> $MAIN_DISK_USAGE_LOG
 

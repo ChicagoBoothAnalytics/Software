@@ -51,7 +51,6 @@ echo `df -h / | sed -n 2p` GraphViz >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade NetworkX
 echo `df -h / | sed -n 2p` NetworkX >> $MAIN_DISK_USAGE_LOG
 
-sudo yum install -y graphviz graphviz-devel
 sudo pip install --upgrade PyGraphViz
 echo `df -h / | sed -n 2p` PyGraphViz >> $MAIN_DISK_USAGE_LOG
 
