@@ -82,35 +82,6 @@ sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/R
 echo `df -h / | sed -n 2p` HDF5 >> $MAIN_DISK_USAGE_LOG
 
 
-# install LibSodium
-wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
-tar xzf LATEST.tar.gz
-sudo rm LATEST.tar.gz
-cd libsodium-*
-./configure --prefix=$SODIUM_DIR
-make
-sudo make install
-export LDFLAGS=-lsodium
-cd ..
-sudo rm -r libsodium-*
-echo `df -h / | sed -n 2p` LibSodium >> $MAIN_DISK_USAGE_LOG
-
-
-# install ZeroMQ
-wget https://github.com/zeromq/zeromq4-1/releases/download/v4.1.5/zeromq-4.1.5.tar.gz
-tar xzf zeromq-*.tar.gz
-sudo rm zeromq-*.tar.gz
-cd zeromq-*
-./autogen.sh
-./configure --prefix=$ZMQ_DIR
-make
-sudo make install
-sudo ldconfig
-cd ..
-sudo rm -r zeromq-*
-echo `df -h / | sed -n 2p` ZeroMQ >> $MAIN_DISK_USAGE_LOG
-
-
 # make Python 2.7 default Python
 sudo rm /usr/bin/python
 sudo rm /usr/bin/pip
