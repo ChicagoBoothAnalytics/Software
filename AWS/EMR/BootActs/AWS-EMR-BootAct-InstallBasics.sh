@@ -91,10 +91,6 @@ sudo ln -s /usr/bin/pip-2.7 /usr/bin/pip
 
 # install basic Python packages
 
-# Cython
-sudo pip install --upgrade Cython
-echo `df -h / | sed -n 2p` Cython >> $MAIN_DISK_USAGE_LOG
-
 # FindSpark
 sudo pip install --upgrade FindSpark
 echo `df -h / | sed -n 2p` FindSpark >> $MAIN_DISK_USAGE_LOG
@@ -103,23 +99,14 @@ echo `df -h / | sed -n 2p` FindSpark >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade H2O
 echo `df -h / | sed -n 2p` H2O >> $MAIN_DISK_USAGE_LOG
 
-# PSutil
-sudo pip install --upgrade PSutil
-echo `df -h / | sed -n 2p` PSutil >> $MAIN_DISK_USAGE_LOG
-
-# Py4J (for PySpark)
-sudo pip install --upgrade Py4J
-echo `df -h / | sed -n 2p` Py4J >> $MAIN_DISK_USAGE_LOG
-
 # PySpark_CSV
 wget https://raw.githubusercontent.com/seahboonsiew/pyspark-csv/master/pyspark_csv.py
-
-# PyZMQ
-sudo pip install --upgrade PyZMQ
+dos2unix pyspark_csv.py
 
 
 # install R basics
 wget https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/R/Install-Basic-Packages.R
+dos2unix Install-Basic-Packages.R
 sudo Rscript Install-Basic-Packages.R
 sudo rm Install-Basic-Packages.R
 
