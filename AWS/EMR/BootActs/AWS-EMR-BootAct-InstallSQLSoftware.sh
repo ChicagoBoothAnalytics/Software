@@ -122,7 +122,6 @@ sudo yum install -y python-psycopg2
 sudo pip install --upgrade PsycoPG2
 echo `df -h / | sed -n 2p` PsycoPG2 >> $MAIN_DISK_USAGE_LOG
 
-sudo yum install -y libffi libffi-devel
 sudo pip install --upgrade PsycoPG2CFFI
 echo `df -h / | sed -n 2p` PsycoPG2CFFI >> $MAIN_DISK_USAGE_LOG
 

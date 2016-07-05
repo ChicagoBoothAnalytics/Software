@@ -67,19 +67,10 @@ echo `df -h / | sed -n 2p` Scientific Support >> $MAIN_DISK_USAGE_LOG
 
 
 # install some other packages
-sudo yum install -y cairo cairo-devel
-sudo yum install -y glib*
-sudo yum install -y graphviz graphviz-devel
-sudo yum install -y libffi libffi-devel
-sudo yum install -y libjpeg libjpeg-devel
-sudo yum install -y libssh2 libssh2-devel
-sudo yum install -y libuuid libuuid-devel
+sudo yum install -y graphviz graphviz-devel   # for PyGraphViz, Deep Learning
+sudo yum install -y libffi libffi-devel   # for SQL, Deep Learning
+sudo yum install -y libjpeg libjpeg-devel   # for Pillow, SciKit-Image
 echo `df -h / | sed -n 2p` Misc. Packages >> $MAIN_DISK_USAGE_LOG
-
-
-# install HDF5
-sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
-echo `df -h / | sed -n 2p` HDF5 >> $MAIN_DISK_USAGE_LOG
 
 
 # make Python 2.7 default Python
@@ -90,6 +81,10 @@ sudo ln -s /usr/bin/pip-2.7 /usr/bin/pip
 
 
 # install basic Python packages
+
+# install Cython (for Deep Learning packages)
+sudo pip install --upgrade Cython
+echo `df -h / | sed -n 2p` Cython >> $MAIN_DISK_USAGE_LOG
 
 # FindSpark
 sudo pip install --upgrade FindSpark
