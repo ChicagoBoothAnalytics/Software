@@ -43,6 +43,7 @@ then
     echo `df -h / | sed -n 2p` iPyExt >> $MAIN_DISK_USAGE_LOG
 
     sudo pip install --upgrade jupyter_nbextensions_configurator
+    sudo pip install --upgrade PSutil
     mkdir -p ~/.local/share/jupyter
     git clone https://github.com/ipython-contrib/IPython-notebook-extensions
     cd IPython-notebook-extensions
