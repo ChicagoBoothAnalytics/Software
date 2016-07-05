@@ -59,6 +59,7 @@ then
 
     # install Scala kernel
     curl -L -o jupyter-scala https://git.io/vrHhi
+    chmod +x jupyter-scala
     ./jupyter-scala
     sudo rm jupyter-scala
     sudo mv /home/hadoop/.local/share/jupyter/kernels/scala211/ ~/.local/share/jupyter/kernels/
