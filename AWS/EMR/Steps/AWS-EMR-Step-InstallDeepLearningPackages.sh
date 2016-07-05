@@ -56,6 +56,17 @@ sudo cp -r $CUDA_ROOT/bin/crt/ /usr/bin/
 echo `df -h / | sed -n 2p` CUDA Toolkit >> $MAIN_DISK_USAGE_LOG
 
 
+wget https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/NVIDIA/cudnn-7.5-linux-x64-v5.0-ga.tgz
+tar xvzf cudnn-*.tgz
+sudo rm cudnn-*.tgz
+sudo mv cudnn-*/cudnn.h $CUDA_ROOT/include
+sudo mv cudnn-*/libcudnn* $CUDA_ROOT/lib64
+sudo chmod a+r $CUDA_ROOT/include/cudnn.h $CUDA_ROOT/lib64/libcudnn*
+sudo rm -r cudnn-*
+
+echo `df -h / | sed -n 2p` CuDNN >> $MAIN_DISK_USAGE_LOG
+
+
 # change directory to Programs directory
 cd $APPS_DIR
 
