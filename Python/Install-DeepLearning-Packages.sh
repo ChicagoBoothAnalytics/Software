@@ -20,8 +20,21 @@ pip install --upgrade Theano --no-dependencies
 
 
 # TensorFlow
-pip install --upgrade ProtoBuf --no-dependencies
-pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.6.0-py2-none-any.whl --no-dependencies
+conda install ProtoBuf
+conda update protobuf
+
+conda install SetupTools
+conda update setuptools
+
+conda install Six
+conda update six
+
+conda install Wheel
+conda update wheel
+
+conda update numpy
+
+pip install --no-dependencies https://storage.googleapis.com/tensorflow/mac/tensorflow-0.9.0-py2-none-any.whl
 
 
 # GNumPy
