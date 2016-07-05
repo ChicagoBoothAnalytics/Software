@@ -36,7 +36,7 @@ echo `df -h / | sed -n 2p` NLtk >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade MLpy
 echo `df -h / | sed -n 2p` MLpy >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade Orange   SKIPPED: takes long
+# sudo pip install --upgrade Orange   # SKIPPED: takes long
 # echo `df -h / | sed -n 2p` Orange >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade SKLearn-Pandas
