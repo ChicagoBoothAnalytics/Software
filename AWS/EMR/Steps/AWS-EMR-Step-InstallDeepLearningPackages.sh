@@ -25,9 +25,9 @@ cd $TMP_DIR
 # Product: GRID K520
 # Operating System: Linux 64-bit
 # Recommended/Beta: Recommended/Certified
-wget http://us.download.nvidia.com/XFree86/Linux-x86_64/358.16/NVIDIA-Linux-x86_64-358.16.run
+wget http://us.download.nvidia.com/XFree86/Linux-x86_64/367.27/NVIDIA-Linux-x86_64-367.27.run
 set +e
-sudo sh NVIDIA-Linux-x86_64-358.16.run --silent --kernel-source-path $KERNEL_SOURCE_PATH --tmpdir $TMP_DIR
+sudo sh NVIDIA-Linux-x86_64-367.27.run --silent --kernel-source-path $KERNEL_SOURCE_PATH --tmpdir $TMP_DIR
 set -e
 echo `df -h / | sed -n 2p` NVIDIA >> $MAIN_DISK_USAGE_LOG
 
@@ -92,14 +92,34 @@ sudo rm -r pycuda
 echo `df -h / | sed -n 2p` PyCUDA >> $MAIN_DISK_USAGE_LOG
 
 # sudo pip install git+https://github.com/cudamat/cudamat.git   installation fails
+# git clone https://github.com/cudamat/cudamat.git
+# cd cudamat
+# sudo python setup.py install
+# cd ..
+# sudo rm -r cudamat
+# echo `df -h / | sed -n 2p` CUDAmat >> $MAIN_DISK_USAGE_LOG
+
+git clone https://github.com/andersbll/cudarray
+cd cudarray
+make
+sudo make install
+sudo python setup.py install
+cd ..
+sudo rm -r cudarray
+echo `df -h / | sed -n 2p` CUDArray >> $MAIN_DISK_USAGE_LOG
 
 set +e
 sudo pip install --upgrade SciKit-CUDA
 set -e
 echo `df -h / | sed -n 2p` SciKit-CUDA >> $MAIN_DISK_USAGE_LOG
 
-sudo pip install GNumPy
+sudo pip install --upgrade GNumPy
 echo `df -h / | sed -n 2p` GNumPy >> $MAIN_DISK_USAGE_LOG
+
+
+# install TensorFlow
+sudo pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.9.0-cp27-none-linux_x86_64.whl
+echo `df -h / | sed -n 2p` TensorFlow >> $MAIN_DISK_USAGE_LOG
 
 
 # install Theano
@@ -113,12 +133,29 @@ dos2unix $THEANORC_SCRIPT_NAME
 cd $APPS_DIR
 
 
+# install HDF5
+sudo yum install -y https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-1.8.16-1.with.szip.encoder.el7.x86_64.rpm https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.16/bin/RPMS/hdf5-devel-1.8.16-1.with.szip.encoder.el7.x86_64.rpm
+echo `df -h / | sed -n 2p` HDF5 >> $MAIN_DISK_USAGE_LOG
+
+
+# install Tables
+git clone https://github.com/PyTables/PyTables
+cd PyTables
+sudo python setup.py install
+cd ..
+sudo rm -r PyTables
+echo `df -h / | sed -n 2p` Tables >> $MAIN_DISK_USAGE_LOG
+
+
 # install Deep Learning packages
-sudo pip install --upgrade git+git://github.com/mila-udem/fuel.git
+sudo pip install git+git://github.com/mila-udem/fuel.git   # don't use --upgrade: PyTables messing up...
 echo `df -h / | sed -n 2p` Fuel >> $MAIN_DISK_USAGE_LOG
 
-sudo pip install --upgrade git+git://github.com/mila-udem/blocks.git
+sudo pip install git+git://github.com/mila-udem/blocks.git   # don't use --upgrade: PyTables messing up...
 echo `df -h / | sed -n 2p` Blocks >> $MAIN_DISK_USAGE_LOG
+
+sudo pip install --upgrade git+https://github.com/mila-udem/platoon
+echo `df -h / | sed -n 2p` Platoon >> $MAIN_DISK_USAGE_LOG
 
 set +e
 sudo pip install --upgrade Brainstorm[all]
@@ -132,20 +169,11 @@ git clone https://github.com/akrizhevsky/cuda-convnet2
 
 # sudo pip install --upgrade DeepCL   SKIPPED: needs OpenCL
 
-sudo pip install --upgrade DeepDish
+sudo pip install DeepDish   # don't use --upgrade: PyTables messing up...
 echo `df -h / | sed -n 2p` DeepDish >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade git+git://github.com/dirkneumann/deepdist.git   SKIPPED: abandoned project
-# echo `df -h / | sed -n 2p` DeepDist >> $MAIN_DISK_USAGE_LOG
-
-git clone https://github.com/andersbll/cudarray
-cd cudarray
-make
-sudo make install
-sudo python setup.py install
-cd ..
-sudo rm -r cudarray
-echo `df -h / | sed -n 2p` CUDArray >> $MAIN_DISK_USAGE_LOG
+sudo pip install --upgrade git+git://github.com/dirkneumann/deepdist.git   # abandoned project
+echo `df -h / | sed -n 2p` DeepDist >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade git+git://github.com/andersbll/deeppy.git
 echo `df -h / | sed -n 2p` DeepPy >> $MAIN_DISK_USAGE_LOG
@@ -176,7 +204,7 @@ echo `df -h / | sed -n 2p` Keras >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
 echo `df -h / | sed -n 2p` Lasagne >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade Mang   SKIPPED: abandoned project
+sudo pip install --upgrade Mang   # abandoned project
 # echo `df -h / | sed -n 2p` Mang >> $MAIN_DISK_USAGE_LOG
 
 git clone https://github.com/dmlc/minerva
@@ -192,8 +220,8 @@ echo `df -h / | sed -n 2p` Mozi >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade NervanaNEON
 echo `df -h / | sed -n 2p` NervanaNEON >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade NeuralPy   skip because this downgrades NumPy
-# echo `df -h / | sed -n 2p` NeuralPy >> $MAIN_DISK_USAGE_LOG
+sudo pip install NeuralPy   # don't use --upgrade: it'd downgrade NumPy
+echo `df -h / | sed -n 2p` NeuralPy >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade NeuroLab
 echo `df -h / | sed -n 2p` NeuroLab >> $MAIN_DISK_USAGE_LOG
@@ -201,21 +229,21 @@ echo `df -h / | sed -n 2p` NeuroLab >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade NLPnet
 echo `df -h / | sed -n 2p` NLPnet >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade git+git://github.com/zomux/nlpy.git   installation fails
-# echo `df -h / | sed -n 2p` NLPy >> $MAIN_DISK_USAGE_LOG
+sudo pip install --upgrade git+git://github.com/zomux/nlpy.git
+echo `df -h / | sed -n 2p` NLPy >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade NN   SKIPPED: toy project
+# sudo pip install --upgrade NN   # SKIPPED: toy project
 # echo `df -h / | sed -n 2p` NN >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade NoLearn
 echo `df -h / | sed -n 2p` NoLearn >> $MAIN_DISK_USAGE_LOG
 
-wget http://bitbucket.org/eigen/eigen/get/3.2.7.zip
-unzip 3.2.7.zip
-sudo rm 3.2.7.zip
+wget http://bitbucket.org/eigen/eigen/get/3.2.8.zip
+unzip 3.2.8.zip
+sudo rm 3.2.8.zip
 mkdir eigen-build
 cd eigen-build
-cmake $APPS_DIR/eigen-eigen-b30b87236a1b
+cmake $APPS_DIR/eigen-eigen-*
 sudo make install
 cd $APPS_DIR
 sudo rm -r eigen*
@@ -264,22 +292,19 @@ echo `df -h / | sed -n 2p` PythonBrain >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade SciKit-NeuralNetwork
 echo `df -h / | sed -n 2p` SciKit-NeuralNetwork >> $MAIN_DISK_USAGE_LOG
 
+sudo pip install --upgrade git+git://github.com/google/SKFlow.git
+echo `df -h / | sed -n 2p` SKFlow >> $MAIN_DISK_USAGE_LOG
+
 sudo pip install --upgrade git+git://github.com/sklearn-theano/sklearn-theano
 echo `df -h / | sed -n 2p` SKLearn-Theano >> $MAIN_DISK_USAGE_LOG
 
-sudo pip install --upgrade git+git://github.com/dougefr/synapyse.git
+sudo pip install --upgrade git+git://github.com/dougefr/Synapyse.git
 echo `df -h / | sed -n 2p` Synapyse >> $MAIN_DISK_USAGE_LOG
-
-sudo pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.6.0-cp27-none-linux_x86_64.whl
-echo `df -h / | sed -n 2p` TensorFlow >> $MAIN_DISK_USAGE_LOG
-
-sudo pip install --upgrade git+git://github.com/google/skflow.git
-echo `df -h / | sed -n 2p` SKFlow >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade Theanets
 echo `df -h / | sed -n 2p` Theanets >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade git+git://github.com/Samsung/veles.git
-# echo `df -h / | sed -n 2p` Veles >> $MAIN_DISK_USAGE_LOG
+sudo pip install --upgrade git+git://github.com/Samsung/veles.git
+echo `df -h / | sed -n 2p` Veles >> $MAIN_DISK_USAGE_LOG
 
-# git clone https://github.com/Samsung/veles.znicz
+git clone https://github.com/Samsung/veles.znicz
