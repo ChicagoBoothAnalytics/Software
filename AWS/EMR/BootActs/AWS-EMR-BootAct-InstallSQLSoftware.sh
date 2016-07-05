@@ -25,18 +25,19 @@ sudo yum install -y unixODBC-devel
 echo `df -h / | sed -n 2p` UnixODBC >> $MAIN_DISK_USAGE_LOG
 
 
+# install SQLalchemy
+sudo pip install --upgrade SQLalchemy
+echo `df -h / | sed -n 2p` SQLalchemy >> $MAIN_DISK_USAGE_LOG
+
+
 # install XlRd
 sudo pip install --upgrade XlRd
+echo `df -h / | sed -n 2p` XlRd >> $MAIN_DISK_USAGE_LOG
 
 
 # install CSVkit
 sudo pip install --upgrade CSVkit
 echo `df -h / | sed -n 2p` CSVkit >> $MAIN_DISK_USAGE_LOG
-
-
-# install SQLalchemy
-sudo pip install --upgrade SQLalchemy
-echo `df -h / | sed -n 2p` SQLalchemy >> $MAIN_DISK_USAGE_LOG
 
 
 # install commonly-applicable drivers
@@ -74,7 +75,6 @@ echo `df -h / | sed -n 2p` AdoDBAPI >> $MAIN_DISK_USAGE_LOG
 # download / install MySQL Python & JDBC drivers
 sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "MySQL Database"
 sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "MySQL Database Client"
-
 sudo yum install -y mysql mysql-devel
 echo `df -h / | sed -n 2p` MySQL YUM Packages >> $MAIN_DISK_USAGE_LOG
 
@@ -109,7 +109,6 @@ wget http://download.oracle.com/otn/utilities_drivers/jdbc/121020/ojdbc7.jar -O 
 # download / install PostgreSQL Python & JDBC drivers
 sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "PostgreSQL Database Server (Version 8)"
 sudo yum groupinstall -y --setopt=group_package_types=mandatory,default,optional "PostgreSQL Database Client (Version 8)"
-
 sudo yum install -y postgresql postgresql-devel
 echo `df -h / | sed -n 2p` PostgreSQL YUM Packages >> $MAIN_DISK_USAGE_LOG
 
@@ -123,6 +122,7 @@ sudo yum install -y python-psycopg2
 sudo pip install --upgrade PsycoPG2
 echo `df -h / | sed -n 2p` PsycoPG2 >> $MAIN_DISK_USAGE_LOG
 
+sudo yum install -y libffi libffi-devel
 sudo pip install --upgrade PsycoPG2CFFI
 echo `df -h / | sed -n 2p` PsycoPG2CFFI >> $MAIN_DISK_USAGE_LOG
 
@@ -141,19 +141,17 @@ cp sqlite-jdbc/lib/jdbc-api-1.4.jar SQLite-JDBC-1.4.jar
 # sudo pip install --upgrade git+git://github.com/fbessho/python-sybase.git   # SKIPPED: requires Sybase software installed
 
 
+# install Impyla & Ibis
+sudo pip install --upgrade Impyla
+sudo pip install --upgrade Ibis-Framework
+
+
 # install R SQL-related packages
 wget https://raw.githubusercontent.com/ChicagoBoothAnalytics/Software/master/R/Install-SQL-and-DataFrame-Packages.R
+dos2unix Install-SQL-and-DataFrame-Packages.R
 # temporarily turn off the error trap because the below installation script fails for
-# following dependencies: "car", "caret", "dplyr" & "plm"
+# following dependencies: "car", "caret" & "plm"
 set +e
 sudo Rscript Install-SQL-and-DataFrame-Packages.R
 set -e
 sudo rm Install-SQL-and-DataFrame-Packages.R
-
-
-# install Ibis
-sudo pip install --upgrade Ibis-Framework
-
-
-# install Impyla
-sudo pip install --upgrade Impyla
