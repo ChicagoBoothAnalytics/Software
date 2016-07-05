@@ -43,11 +43,9 @@ then
     echo `df -h / | sed -n 2p` iPyExt >> $MAIN_DISK_USAGE_LOG
 
     sudo pip install --upgrade jupyter_nbextensions_configurator
-
+    mkdir -p ~/.local/share/jupyter
     git clone https://github.com/ipython-contrib/IPython-notebook-extensions
     cd IPython-notebook-extensions
-    mkdir -p ~/.local/share/jupyter
-
     # the following prefers Python 3.x to have been installed;
     # hence we temporarily turn off the error trap to force the installation
     set +e
