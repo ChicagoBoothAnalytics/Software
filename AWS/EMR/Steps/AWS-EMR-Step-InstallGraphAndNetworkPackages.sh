@@ -33,6 +33,7 @@ echo `df -h / | sed -n 2p` APGL >> $MAIN_DISK_USAGE_LOG
 # sudo rm -r graph-tool-*
 # echo `df -h / | sed -n 2p` Graph-Tool >> $MAIN_DISK_USAGE_LOG
 
+sudo yum install -y cairo cairo-devel
 wget http://cairographics.org/releases/py2cairo-1.10.0.tar.bz2
 tar jxf py2cairo-1.10.0.tar.bz2
 sudo rm -r py2cairo-1.10.0.tar.bz2
@@ -50,6 +51,7 @@ echo `df -h / | sed -n 2p` GraphViz >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade NetworkX
 echo `df -h / | sed -n 2p` NetworkX >> $MAIN_DISK_USAGE_LOG
 
+sudo yum install -y graphviz graphviz-devel
 sudo pip install --upgrade PyGraphViz
 echo `df -h / | sed -n 2p` PyGraphViz >> $MAIN_DISK_USAGE_LOG
 
