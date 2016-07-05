@@ -5,7 +5,8 @@ mkdir -p $APPS_DIR
 export TMP_DIR=/mnt/tmp
 mkdir -p $TMP_DIR
 export SPARK_HOME=/usr/lib/spark
-export CUDA_ROOT=$APPS_DIR/cuda-7.5
+export CUDA_HOME=$APPS_DIR/cuda-7.5
+export CUDA_ROOT=$CUDA_HOME
 export NVVMIR_LIBRARY_DIR=$CUDA_ROOT/nvvm/libdevice
 export OPENBLAS_DIR=$APPS_DIR/OpenBLAS
 export GEOS_DIR=/usr
