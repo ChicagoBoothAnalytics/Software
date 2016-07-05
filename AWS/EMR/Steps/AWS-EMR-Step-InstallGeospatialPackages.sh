@@ -29,15 +29,15 @@ cd ..
 sudo rm -r basemap
 echo `df -h / | sed -n 2p` Basemap >> $MAIN_DISK_USAGE_LOG
 
-wget http://download.osgeo.org/proj/proj-4.8.0.tar.gz
-tar xzf proj-4.8.0.tar.gz
-sudo rm proj-4.8.0.tar.gz
-cd proj-4.8.0
+wget http://download.osgeo.org/proj/proj-4.9.2.tar.gz
+tar xzf proj-*.tar.gz
+sudo rm proj-*.tar.gz
+cd proj-*
 ./configure --prefix=$PROJ_DIR
 make
 sudo make install
 cd ..
-sudo rm -r proj-4.8.0
+sudo rm -r proj-*
 echo `df -h / | sed -n 2p` Proj >> $MAIN_DISK_USAGE_LOG
 
 sudo pip install --upgrade Descartes
@@ -52,10 +52,9 @@ echo `df -h / | sed -n 2p` GoogleMaps >> $MAIN_DISK_USAGE_LOG
 sudo pip install --upgrade PyProj
 echo `df -h / | sed -n 2p` PyProj >> $MAIN_DISK_USAGE_LOG
 
-# sudo pip install --upgrade PySAL   SKIPPED: somehow this makes GPU master node hang...
-# echo `df -h / | sed -n 2p` PySAL >> $MAIN_DISK_USAGE_LOG
+sudo pip install --upgrade PySAL   # SKIPPED: somehow this makes GPU master node hang...
+echo `df -h / | sed -n 2p` PySAL >> $MAIN_DISK_USAGE_LOG
 
-# brew install gdal
-# sudo pip install --upgrade Fiona   # depends on GDAL
-# sudo pip install --upgrade Cartopy   # canno detect Proj4.8
-# sudo pip install --upgrade Kartograph    # not yet released
+# sudo pip install --upgrade Fiona   # SKIPPED: depends on GDAL
+# sudo pip install --upgrade Cartopy   # SKIPPED: Could not find library geos_c
+# sudo pip install --upgrade Kartograph    # SKIPPED: not yet released
