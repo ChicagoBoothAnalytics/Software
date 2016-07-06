@@ -20,9 +20,6 @@ pip install --upgrade Theano --no-dependencies
 
 
 # TensorFlow
-conda install ProtoBuf
-conda update protobuf
-
 conda install SetupTools
 conda update setuptools
 
@@ -34,6 +31,7 @@ conda update wheel
 
 conda update numpy
 
+pip uninstall protobuf   # a faulty version of ProtoBuf seems to cause problems
 pip install https://storage.googleapis.com/tensorflow/mac/tensorflow-0.9.0-py2-none-any.whl
 
 
