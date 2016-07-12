@@ -15,7 +15,6 @@ int_division = raise
 
 # compilation settings
 cxx = /usr/bin/g++
-mode = FAST_RUN
 optimizer = fast_run
 optimizer_excluding = inplace
 optimizer_verbose = False
