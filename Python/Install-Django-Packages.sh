@@ -43,6 +43,8 @@ pip install --upgrade PILkit
 conda install Pillow
 conda update pillow
 
+pip install --upgrade Python-Social-Auth
+
 conda install PyTZ
 conda update pytz
 
